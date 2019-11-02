@@ -1,0 +1,8 @@
+language: dart
+dart: 
+  - stable
+install:
+  - gem install coveralls-lcov
+script: make
+after_success:
+  - coveralls-lcov --repo-token $COVERALLS_TOKEN coverage/lcov.info
