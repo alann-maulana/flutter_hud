@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 
+/// Class for managing progress HUD popup
 class PopupHUD {
+  /// Initialize [PopupHUD]
   PopupHUD(
     this.context, {
     VoidCallback onCancel,
@@ -14,19 +16,24 @@ class PopupHUD {
           onCancel: onCancel,
         );
 
+  // The [BuildContext] of [PopupHUD] progress HUD to display
   final BuildContext context;
   final _PopupHUD _popupHUD;
 
+  /// Update the displayed progress HUD label
   void setLabel(String label) {
     _popupHUD.setLabel(label);
   }
 
+  /// Update the displayed progress HUD detail label
   void setDetailLabel(String detail) {
     _popupHUD.setDetailLabel(detail);
   }
 
+  /// Show [PopupHUD] on top of current [Navigator]
   Future<void> show() => Navigator.push(context, _popupHUD);
 
+  /// Dismiss current showing [PopupHUD] from the top of current [Navigator]
   bool dismiss() => Navigator.pop(context);
 }
 
