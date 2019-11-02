@@ -58,11 +58,11 @@ class WidgetHUD extends StatelessWidget {
                 if (onCancel != null)
                   (Platform.isIOS || Platform.isMacOS)
                       ? CupertinoButton(
-                          child: Text('Close'),
+                          child: Text('Cancel'),
                           onPressed: onCancel,
                         )
                       : FlatButton(
-                          child: Text('Close'),
+                          child: Text('Cancel'),
                           textTheme: ButtonTextTheme.primary,
                           onPressed: onCancel,
                         ),

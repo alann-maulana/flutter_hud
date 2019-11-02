@@ -1,17 +1,45 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 
-class PopupHUD extends ModalRoute<void> {
+class PopupHUD {
   PopupHUD(
     this.context, {
+    VoidCallback onCancel,
+    HUD hud,
+  }) : _popupHUD = _PopupHUD(
+          hud: hud ??= HUD.kDefaultHUD,
+          onCancel: onCancel,
+        );
+
+  final BuildContext context;
+  final _PopupHUD _popupHUD;
+
+  void setLabel(String label) {
+    _popupHUD.setLabel(label);
+  }
+
+  void setDetailLabel(String detail) {
+    _popupHUD.setDetailLabel(detail);
+  }
+
+  Future<void> show() => Navigator.push(context, _popupHUD);
+
+  bool dismiss() => Navigator.pop(context);
+}
+
+class _PopupHUD extends ModalRoute<void> {
+  _PopupHUD({
+    this.onCancel,
     HUD hud,
   }) : _hud = hud ??= HUD.kDefaultHUD {
     this._label = _hud.label;
     this._detailLabel = _hud.detailLabel;
   }
 
-  final BuildContext context;
+  final VoidCallback onCancel;
   final HUD _hud;
   String _label;
   String _detailLabel;
@@ -65,6 +93,18 @@ class PopupHUD extends ModalRoute<void> {
 
         return SizedBox.shrink();
       }),
+      if (onCancel != null) SizedBox(height: 16),
+      if (onCancel != null)
+        (Platform.isIOS || Platform.isMacOS)
+            ? CupertinoButton(
+                child: Text('Cancel'),
+                onPressed: () => canceled(context),
+              )
+            : FlatButton(
+                child: Text('Cancel'),
+                textTheme: ButtonTextTheme.primary,
+                onPressed: () => canceled(context),
+              ),
     ];
 
     return Material(
@@ -79,6 +119,13 @@ class PopupHUD extends ModalRoute<void> {
         ),
       ),
     );
+  }
+
+  void canceled(BuildContext context) {
+    Navigator.pop(context);
+    if (onCancel != null) {
+      onCancel();
+    }
   }
 
   @override
@@ -109,8 +156,4 @@ class PopupHUD extends ModalRoute<void> {
       });
     }
   }
-
-  Future<void> show() => Navigator.push(context, this);
-
-  bool dismiss() => Navigator.pop(context);
 }
