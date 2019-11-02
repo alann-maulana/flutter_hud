@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.1.0] - Nov 2, 2019
 
-* TODO: Describe initial release.
+* Initial release.
+    - HUD Widget
+    - HUD PopUp
