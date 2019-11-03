@@ -1,6 +1,6 @@
 # Flutter HUD
 
-[![Pub](https://img.shields.io/pub/v/flutter_hud)](https://pub.dev/packages/flutter_hud) [![Build Status](https://travis-ci.org/eyro-labs/flutter_hud.svg?branch=master)](https://travis-ci.org/eyro-labs/flutter_hud) [![Coverage Status](https://coveralls.io/repos/github/eyro-labs/flutter_hud/badge.svg?branch=develop)](https://coveralls.io/github/eyro-labs/flutter_hud?branch=develop) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud?ref=badge_shield)  
+[![Pub](https://img.shields.io/pub/v/flutter_hud)](https://pub.dev/packages/flutter_hud) [![Build Status](https://travis-ci.org/eyro-labs/flutter_hud.svg?branch=master)](https://travis-ci.org/eyro-labs/flutter_hud) [![Coverage Status](https://coveralls.io/repos/github/eyro-labs/flutter_hud/badge.svg?branch=develop)](https://coveralls.io/github/eyro-labs/flutter_hud?branch=develop) ![GitHub](https://img.shields.io/github/license/eyro-labs/flutter_hud?color=2196F3) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud?ref=badge_shield)  
 
 A clean and lightweight progress HUD to show a running asynchronous task for Flutter.
 
@@ -192,9 +192,25 @@ Widget build(BuildContext context) {
 }
 ```
 
-Please see folder `example\lib` to view a complete example about using `flutter_hud`.
+Please see folder [example/lib](https://github.com/eyro-labs/flutter_hud/tree/master/example/lib/hud) to view a complete example about using `flutter_hud`.
 
-# Author
+## Widget HUD Demo
+
+| [Widget HUD][1.hud-default]          | [Widget HUD with Label][2.hud-with-label]      | 
+| -------------------------------------- | -------------------------------------------- | 
+| ![HUD Default][1.hud-default.gif]      | ![HUD with Label][2.hud-with-label.gif]      |  
+
+| [Widget HUD with Label and Detail][3.hud-with-label-detail.gif]  | [Widget HUD with Cancelable][4.hud-with-cancelable]  | 
+| ---------------------------------------------------------------- | ---------------------------------------------------- | 
+| ![HUD Default][3.hud-with-label-detail.gif]                      | ![HUD with Cancelable][4.hud-with-cancelable.gif]    |  
+
+## Widget HUD Popup
+
+| [Popup HUD][5.hud-popup.gif]           | [Popup HUD with Cancelable][6.hud-popup-cancelable.gif]  | 
+| -------------------------------------- | -------------------------------------------------------- | 
+| ![HUD Popup Default][5.hud-popup.gif]  | ![HUD Popup with Cancelable][6.hud-popup-cancelable.gif] |  
+
+## Author
 
 Flutter HUD plugin is developed by Eyro Labs. You can contact us at <me@eyro.co.id>.
 
@@ -202,3 +218,17 @@ Flutter HUD plugin is developed by Eyro Labs. You can contact us at <me@eyro.co.
 
 MIT License
 - [See LICENSE](https://github.com/eyro-labs/flutter_hud/blob/master/LICENSE)
+
+[1.hud-default.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/1.hud-default.gif "HUD Default"
+[2.hud-with-label.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/2.hud-with-label.gif "HUD with Label"
+[3.hud-with-label-detail.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/3.hud-with-label-detail.gif "HUD with Label and Detail"
+[4.hud-with-cancelable.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/4.hud-with-cancelable.gif "HUD with Cancelable"
+[5.hud-popup.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/5.hud-popup.gif "HUD Popup Default"
+[6.hud-popup-cancelable.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/6.hud-popup-cancelable.gif "HUD Popup with Cancelable"
+
+[1.hud-default]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_default.dart
+[2.hud-with-label]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_label.dart
+[3.hud-with-label-detail]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_label_detail.dart
+[4.hud-with-cancelable]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_cancelable.dart
+[5.hud-popup]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_popup.dart
+[6.hud-popup-cancelable]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_popup_cancelable.dart
