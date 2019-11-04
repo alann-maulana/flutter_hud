@@ -1,4 +1,4 @@
-# Flutter HUD
+# Flutter HUD 
 
 [![Pub](https://img.shields.io/pub/v/flutter_hud)](https://pub.dev/packages/flutter_hud) [![Build Status](https://travis-ci.org/eyro-labs/flutter_hud.svg?branch=master)](https://travis-ci.org/eyro-labs/flutter_hud) [![Coverage Status](https://coveralls.io/repos/github/eyro-labs/flutter_hud/badge.svg?branch=master)](https://coveralls.io/github/eyro-labs/flutter_hud?branch=master) ![GitHub](https://img.shields.io/github/license/eyro-labs/flutter_hud?color=2196F3) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud?ref=badge_shield)  
 
