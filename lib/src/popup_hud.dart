@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
+import 'package:flutter_hud/src/helper.dart';
 
 /// Class for managing progress HUD popup
 class PopupHUD {
@@ -16,14 +17,34 @@ class PopupHUD {
           onCancel: onCancel,
         );
 
-  // The [BuildContext] of [PopupHUD] progress HUD to display
+  /// The [BuildContext] of [PopupHUD] progress HUD to display
   final BuildContext context;
   final _PopupHUD _popupHUD;
+
+  /// If non-null, the value of this progress indicator.
+  ///
+  /// A value of 0.0 means no progress and 1.0 means that progress is complete.
+  ///
+  /// If null, this progress indicator is indeterminate, which means the
+  /// indicator displays a predetermined animation that does not indicate how
+  /// much actual progress is being made.
+  double get value => _popupHUD._value;
+
+  /// Update the displayed progress HUD value
+  void setValue(double value) {
+    _popupHUD.setValue(value);
+  }
+
+  /// Return progress HUD label text
+  String get label => _popupHUD._label;
 
   /// Update the displayed progress HUD label
   void setLabel(String label) {
     _popupHUD.setLabel(label);
   }
+
+  /// Return progress HUD detail label text
+  String get detailLabel => _popupHUD._detailLabel;
 
   /// Update the displayed progress HUD detail label
   void setDetailLabel(String detail) {
@@ -48,10 +69,11 @@ class _PopupHUD extends ModalRoute<void> {
 
   final VoidCallback onCancel;
   final HUD _hud;
+  double _value;
   String _label;
   String _detailLabel;
 
-  StateSetter _setStateLabel, _setStateDetailLabel;
+  StateSetter _setStateValue, _setStateLabel, _setStateDetailLabel;
 
   @override
   Color get barrierColor => _hud.color.withOpacity(_hud.opacity);
@@ -65,8 +87,18 @@ class _PopupHUD extends ModalRoute<void> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation) {
+    final size = MediaQuery.of(context).size;
+
     final children = <Widget>[
-      _hud.progressIndicator,
+      Container(
+        constraints: BoxConstraints(maxWidth: size.width * 0.6),
+        child: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          _setStateValue = setState;
+
+          return showOrUpdateProgressIndicator(_hud, _value);
+        }),
+      ),
       if (_showLabel) SizedBox(height: 8),
       if (_showLabel) SizedBox(height: 8),
       StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
@@ -147,6 +179,15 @@ class _PopupHUD extends ModalRoute<void> {
   bool get _showLabel => _label != null && _label.isNotEmpty;
 
   bool get _showDetailLabel => _detailLabel != null && _detailLabel.isNotEmpty;
+
+  void setValue(double value) {
+    assert(value == null || (value >= 0 && value <= 1.0));
+    if (_setStateValue != null) {
+      _setStateValue(() {
+        this._value = value;
+      });
+    }
+  }
 
   void setLabel(String label) {
     if (_setStateLabel != null) {

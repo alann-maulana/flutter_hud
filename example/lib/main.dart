@@ -4,6 +4,8 @@ import 'package:example/hud/hud_label.dart';
 import 'package:example/hud/hud_label_detail.dart';
 import 'package:example/hud/hud_popup.dart';
 import 'package:example/hud/hud_popup_cancelable.dart';
+import 'package:example/hud/hud_popup_progress.dart';
+import 'package:example/hud/hud_progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +55,12 @@ class HUDList extends StatelessWidget {
                   '"${HUDWithLabelDetail.title}" with cancelable button',
               builder: (context) => HUDWithCancelable(),
             ),
+            TileItem(
+              label: HUDWidgetProgress.title,
+              description:
+                  '"${HUDWithLabelDetail.title}" with progress',
+              builder: (context) => HUDWidgetProgress(),
+            ),
             TileGroup('HUD POPUP'),
             TileItem(
               label: HUDUsingPopup.title,
@@ -63,6 +71,11 @@ class HUDList extends StatelessWidget {
               label: HUDUsingPopupCancelable.title,
               description: '"${HUDUsingPopup.title}" with cancelable options',
               builder: (context) => HUDUsingPopupCancelable(),
+            ),
+            TileItem(
+              label: HUDPopupProgress.title,
+              description: '"${HUDUsingPopup.title}" with progress',
+              builder: (context) => HUDPopupProgress(),
             ),
           ].map((t) => t),
         ).toList(),
