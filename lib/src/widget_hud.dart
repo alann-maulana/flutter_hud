@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hud/src/helper.dart';
 import 'package:flutter_hud/src/hud.dart';
 
 /// Class for managing progress HUD widget
@@ -12,6 +13,7 @@ class WidgetHUD extends StatelessWidget {
     @required this.builder,
     this.onCancel,
     this.showHUD = false,
+    this.value,
     HUD hud,
   })  : assert(builder != null),
         hud = hud ??= HUD.kDefaultHUD;
@@ -28,6 +30,15 @@ class WidgetHUD extends StatelessWidget {
   /// Flag to showing progress HUD
   final bool showHUD;
 
+  /// If non-null, the value of this progress indicator.
+  ///
+  /// A value of 0.0 means no progress and 1.0 means that progress is complete.
+  ///
+  /// If null, this progress indicator is indeterminate, which means the
+  /// indicator displays a predetermined animation that does not indicate how
+  /// much actual progress is being made.
+  final double value;
+
   @override
   Widget build(BuildContext context) {
     if (!showHUD) {
@@ -35,6 +46,7 @@ class WidgetHUD extends StatelessWidget {
     }
 
     final textTheme = Theme.of(context).textTheme;
+    final size = MediaQuery.of(context).size;
 
     return Stack(
       children: <Widget>[
@@ -46,7 +58,10 @@ class WidgetHUD extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 if (onCancel != null) SizedBox(height: 32),
-                hud.progressIndicator,
+                Container(
+                  constraints: BoxConstraints(maxWidth: size.width * 0.6),
+                  child: showOrUpdateProgressIndicator(hud, value),
+                ),
                 if (hud.label != null || hud.detailLabel != null)
                   SizedBox(height: 8),
                 if (hud.label != null) SizedBox(height: 8),
