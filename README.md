@@ -192,23 +192,46 @@ Widget build(BuildContext context) {
 }
 ```
 
+> How about adding some progress to it?
+```dart
+final popup = PopupHUD(
+  context,
+  hud: HUD(
+    label: 'Generating Primes',
+    detailLabel: 'Initializing..',
+  ),
+);
+
+popup.show();
+final number = await getPrimes(delayedSeconds: 1);
+for (int i = 1; i <= 10; i++) {
+  await Future.delayed(Duration(milliseconds: 500));
+  final value = i * 0.10;
+  popup.setValue(value);
+  popup.setDetailLabel('Progress ${(value * 100).toInt()}%..');
+}
+
+await Future.delayed(Duration(milliseconds: 500));
+popup.dismiss();
+```
+
 Please see folder [example/lib](https://github.com/eyro-labs/flutter_hud/tree/master/example/lib/hud) to view a complete example about using `flutter_hud`.
 
 ## Widget HUD Demo
 
-| [Widget HUD][1.hud-default]          | [Widget HUD with Label][2.hud-with-label]      | 
-| -------------------------------------- | -------------------------------------------- | 
-| ![HUD Default][1.hud-default.gif]      | ![HUD with Label][2.hud-with-label.gif]      |  
+| [Widget HUD][1.hud-default]            | [Widget HUD with Label][2.hud-with-label]    | [Widget HUD with Label and Detail][3.hud-with-label-detail]      | 
+| -------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------- | 
+| ![HUD Default][1.hud-default.gif]      | ![HUD with Label][2.hud-with-label.gif]      | ![HUD Default][3.hud-with-label-detail.gif]                      |  
 
-| [Widget HUD with Label and Detail][3.hud-with-label-detail.gif]  | [Widget HUD with Cancelable][4.hud-with-cancelable]  | 
-| ---------------------------------------------------------------- | ---------------------------------------------------- | 
-| ![HUD Default][3.hud-with-label-detail.gif]                      | ![HUD with Cancelable][4.hud-with-cancelable.gif]    |  
+| [Widget HUD with Cancelable][4.hud-with-cancelable]  | [Widget HUD with Progress][7.hud-progress]  |   | 
+| ---------------------------------------------------- | ------------------------------------------- | - | 
+| ![HUD with Cancelable][4.hud-with-cancelable.gif]    | ![HUD with Progress][7.hud-progress.gif]    |   |  
 
 ## Widget HUD Popup
 
-| [Popup HUD][5.hud-popup.gif]           | [Popup HUD with Cancelable][6.hud-popup-cancelable.gif]  | 
-| -------------------------------------- | -------------------------------------------------------- | 
-| ![HUD Popup Default][5.hud-popup.gif]  | ![HUD Popup with Cancelable][6.hud-popup-cancelable.gif] |  
+| [Popup HUD][5.hud-popup]               | [Popup HUD with Cancelable][6.hud-popup-cancelable]      | [Popup HUD with Progress][8.hud-popup-progress] | 
+| -------------------------------------- | -------------------------------------------------------- | ----------------------------------------------- | 
+| ![HUD Popup Default][5.hud-popup.gif]  | ![HUD Popup with Cancelable][6.hud-popup-cancelable.gif] | ![HUD Popup Progress][8.hud-popup-progress.gif] |  
 
 ## Author
 
@@ -225,6 +248,8 @@ MIT License
 [4.hud-with-cancelable.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/4.hud-with-cancelable.gif "HUD with Cancelable"
 [5.hud-popup.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/5.hud-popup.gif "HUD Popup Default"
 [6.hud-popup-cancelable.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/6.hud-popup-cancelable.gif "HUD Popup with Cancelable"
+[7.hud-progress.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/7.hud-progress.gif "HUD Popup with Cancelable"
+[8.hud-popup-progress.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/8.hud-popup-progress.gif "HUD Popup with Cancelable"
 
 [1.hud-default]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_default.dart
 [2.hud-with-label]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_label.dart
@@ -232,3 +257,5 @@ MIT License
 [4.hud-with-cancelable]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_cancelable.dart
 [5.hud-popup]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_popup.dart
 [6.hud-popup-cancelable]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_popup_cancelable.dart
+[7.hud-progress]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_progress.dart
+[8.hud-popup-progress]: https://github.com/eyro-labs/flutter_hud/blob/master/example/lib/hud/hud_popup_progress.dart
