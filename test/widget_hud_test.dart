@@ -31,9 +31,9 @@ void main() {
     final progressFinder = find.byType(CupertinoActivityIndicator);
     final progressFinder2 = find.byType(CircularProgressIndicator);
 
-    expect(bodyFinder, findsOneWidget, skip: true);
+    expect(bodyFinder, findsOneWidget);
+    expect(progressFinder, findsOneWidget, skip: true);
     expect(progressFinder2, findsOneWidget, skip: true);
-    expect(progressFinder, findsOneWidget);
   });
 
   testWidgets('CircularProgressIndicator HUD shown',
