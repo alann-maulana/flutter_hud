@@ -21,15 +21,30 @@ class PopupHUD {
   final BuildContext context;
   final _PopupHUD _popupHUD;
 
+  /// If non-null, the value of this progress indicator.
+  ///
+  /// A value of 0.0 means no progress and 1.0 means that progress is complete.
+  ///
+  /// If null, this progress indicator is indeterminate, which means the
+  /// indicator displays a predetermined animation that does not indicate how
+  /// much actual progress is being made.
+  double get value => _popupHUD._value;
+
   /// Update the displayed progress HUD value
   void setValue(double value) {
     _popupHUD.setValue(value);
   }
 
+  /// Return progress HUD label text
+  String get label => _popupHUD._label;
+
   /// Update the displayed progress HUD label
   void setLabel(String label) {
     _popupHUD.setLabel(label);
   }
+
+  /// Return progress HUD detail label text
+  String get detailLabel => _popupHUD._detailLabel;
 
   /// Update the displayed progress HUD detail label
   void setDetailLabel(String detail) {
