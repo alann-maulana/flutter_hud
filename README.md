@@ -14,7 +14,7 @@ Add to pubspec.yaml:
 
 ```yaml
 dependencies:
-  flutter_parse: any
+  flutter_hud: any
 ```
 
 ## Import Library
