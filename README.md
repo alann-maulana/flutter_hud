@@ -1,6 +1,6 @@
 # Flutter HUD 
 
-[![Pub](https://img.shields.io/pub/v/flutter_hud)](https://pub.dev/packages/flutter_hud) [![Build Status](https://travis-ci.org/eyro-labs/flutter_hud.svg?branch=master)](https://travis-ci.org/eyro-labs/flutter_hud) [![Coverage Status](https://coveralls.io/repos/github/eyro-labs/flutter_hud/badge.svg?branch=master)](https://coveralls.io/github/eyro-labs/flutter_hud?branch=master) ![GitHub](https://img.shields.io/github/license/eyro-labs/flutter_hud?color=2196F3) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud?ref=badge_shield)  
+[![Pub](https://img.shields.io/pub/v/flutter_hud)](https://pub.dev/packages/flutter_hud) [![Build Status](https://travis-ci.org/eyro-labs/flutter_hud.svg?branch=master)](https://travis-ci.org/eyro-labs/flutter_hud) [![Coverage Status](https://coveralls.io/repos/github/eyro-labs/flutter_hud/badge.svg?branch=master)](https://coveralls.io/github/eyro-labs/flutter_hud?branch=master) [![GitHub](https://img.shields.io/github/license/eyro-labs/flutter_hud?color=2196F3)](https://github.com/eyro-labs/flutter_hud/blob/master/LICENSE) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud?ref=badge_shield)  
 
 A clean and lightweight progress HUD to show a running asynchronous task for Flutter.
 
@@ -236,11 +236,6 @@ Please see folder [example/lib](https://github.com/eyro-labs/flutter_hud/tree/ma
 ## Author
 
 Flutter HUD plugin is developed by Eyro Labs. You can contact us at <me@eyro.co.id>.
-
-## License
-
-MIT License
-- [See LICENSE](https://github.com/eyro-labs/flutter_hud/blob/master/LICENSE)
 
 [1.hud-default.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/1.hud-default.gif "HUD Default"
 [2.hud-with-label.gif]: https://raw.githubusercontent.com/eyro-labs/flutter_hud/master/example/gifs/2.hud-with-label.gif "HUD with Label"
