@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 import 'package:flutter_hud/src/helper.dart';
+import 'package:flutter_hud/src/shared/cancel_button.dart';
 
 /// Class for managing progress HUD popup
 class PopupHUD {
@@ -133,17 +132,7 @@ class _PopupHUD extends ModalRoute<void> {
         return SizedBox.shrink();
       }),
       if (onCancel != null) SizedBox(height: 16),
-      if (onCancel != null)
-        (Platform.isIOS || Platform.isMacOS)
-            ? CupertinoButton(
-                child: Text('Cancel'),
-                onPressed: () => canceled(context),
-              )
-            : FlatButton(
-                child: Text('Cancel'),
-                textTheme: ButtonTextTheme.primary,
-                onPressed: () => canceled(context),
-              ),
+      if (onCancel != null) CancelButton(onCancel: onCancel),
     ];
 
     return Material(

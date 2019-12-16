@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
 
 /// Class for managing progress HUD template
 class HUD {
@@ -15,10 +14,7 @@ class HUD {
     this.detailLabel,
     this.detailLabelStyle,
   })  : assert(opacity >= 0.0 && opacity <= 1.0),
-        progressIndicator = progressIndicator ??=
-            (Platform.isIOS || Platform.isMacOS
-                ? const CupertinoActivityIndicator(radius: 20)
-                : const CircularProgressIndicator());
+        progressIndicator = progressIndicator ??= const hud.ProgressIndicator();
 
   /// The global default template for generating progress HUD
   static HUD kDefaultHUD = HUD();

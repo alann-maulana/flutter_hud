@@ -15,6 +15,9 @@ build-local: reformatting build
 	genhtml -o coverage coverage/lcov.info
 	open coverage/index.html
 
+pana:
+	pana -s path .
+
 docs:
 	rm -rf doc
 	dartdoc --exclude 'dart:async,dart:collection,dart:convert,dart:core,dart:developer,dart:io,dart:isolate,dart:math,dart:typed_data,dart:ui'
