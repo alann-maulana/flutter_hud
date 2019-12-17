@@ -35,6 +35,7 @@ void main() {
   });
 
   testWidgets('Popup HUD with label', (WidgetTester tester) async {
+    PopupHUD popup;
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -42,7 +43,7 @@ void main() {
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
-                final popup = PopupHUD(
+                popup = PopupHUD(
                   context,
                   hud: HUD(
                     progressIndicator: CircularProgressIndicator(),
@@ -69,9 +70,15 @@ void main() {
     final labelFinder = find.text('Loading..');
     expect(progressFinder, findsOneWidget);
     expect(labelFinder, findsOneWidget);
+
+    expect(popup.label, 'Loading..');
+    popup.setLabel('Done');
+    await tester.pump();
+    expect(popup.label, 'Done');
   });
 
   testWidgets('Popup HUD with label and detail', (WidgetTester tester) async {
+    PopupHUD popup;
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -79,7 +86,7 @@ void main() {
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
-                final popup = PopupHUD(
+                popup = PopupHUD(
                   context,
                   hud: HUD(
                     progressIndicator: CircularProgressIndicator(),
@@ -103,12 +110,27 @@ void main() {
     await tester.tap(fabFinder);
     await tester.pump();
 
-    final progressFinder = find.byType(CircularProgressIndicator);
-    final labelFinder = find.text('Loading..');
-    final detailFinder = find.text('Please wait');
+    var progressFinder = find.byType(CircularProgressIndicator);
+    var labelFinder = find.text('Loading..');
+    var detailFinder = find.text('Please wait');
     expect(progressFinder, findsOneWidget);
     expect(labelFinder, findsOneWidget);
     expect(detailFinder, findsOneWidget);
+
+    expect(popup.detailLabel, 'Please wait');
+    popup.setDetailLabel('OK');
+    await tester.pump();
+    expect(popup.detailLabel, 'OK');
+
+    popup.dismiss();
+    await tester.pump();
+
+    progressFinder = find.byType(CircularProgressIndicator);
+    labelFinder = find.text('Loading..');
+    detailFinder = find.text('OK');
+    expect(progressFinder, findsNothing);
+    expect(labelFinder, findsNothing);
+    expect(detailFinder, findsNothing);
   });
 
   testWidgets('Popup HUD cancelable', (WidgetTester tester) async {

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ProgressIndicator extends StatelessWidget {
@@ -8,7 +9,8 @@ class ProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS || Platform.isMacOS) {
+    if ((Platform.isIOS || Platform.isMacOS) &&
+        Theme.of(context).platform == TargetPlatform.iOS) {
       return CupertinoTheme(
         data: CupertinoThemeData(
           brightness: Brightness.dark,

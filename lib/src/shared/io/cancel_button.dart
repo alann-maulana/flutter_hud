@@ -12,7 +12,8 @@ class CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS || Platform.isMacOS) {
+    if ((Platform.isIOS || Platform.isMacOS) &&
+        Theme.of(context).platform == TargetPlatform.iOS) {
       return Directionality(
         textDirection: TextDirection.ltr,
         child: CupertinoButton(
