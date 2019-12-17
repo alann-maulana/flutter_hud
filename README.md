@@ -235,7 +235,7 @@ Please see folder [example/lib](https://github.com/eyro-labs/flutter_hud/tree/ma
 
 ## Author
 
-Flutter HUD plugin is developed by Eyro Labs. You can contact us at <me@eyro.co.id>.
+Flutter HUD plugin is developed by Eyro Labs. You can contact us at <admin@cubeacon.com>.
 
 [1.hud-default.gif]: https://eyro-labs.github.io/flutter_hud/example/gifs/1.hud-default.gif "HUD Default"
 [2.hud-with-label.gif]: https://eyro-labs.github.io/flutter_hud/example/gifs/2.hud-with-label.gif "HUD with Label"

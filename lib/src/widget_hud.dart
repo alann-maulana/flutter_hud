@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/src/helper.dart';
 import 'package:flutter_hud/src/hud.dart';
+import 'package:flutter_hud/src/shared/cancel_button.dart';
 
 /// Class for managing progress HUD widget
 // ignore: must_be_immutable
@@ -79,17 +78,7 @@ class WidgetHUD extends StatelessWidget {
                         textTheme.subtitle.copyWith(color: Colors.white70),
                   ),
                 if (onCancel != null) SizedBox(height: 16),
-                if (onCancel != null)
-                  (Platform.isIOS || Platform.isMacOS)
-                      ? CupertinoButton(
-                          child: Text('Cancel'),
-                          onPressed: onCancel,
-                        )
-                      : FlatButton(
-                          child: Text('Cancel'),
-                          textTheme: ButtonTextTheme.primary,
-                          onPressed: onCancel,
-                        ),
+                if (onCancel != null) CancelButton(onCancel: onCancel),
               ],
             ),
           ),

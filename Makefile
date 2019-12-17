@@ -13,7 +13,12 @@ reformatting:
 
 build-local: reformatting build
 	genhtml -o coverage coverage/lcov.info
+	lcov --list coverage/lcov.info
+	lcov --summary coverage/lcov.info
 	open coverage/index.html
+
+pana:
+	pana -s path .
 
 docs:
 	rm -rf doc

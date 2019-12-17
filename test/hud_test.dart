@@ -1,17 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:flutter_hud/flutter_hud.dart';
+import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('test default HUD', () {
     final kDefaultHUD = HUD.kDefaultHUD;
 
-    expect(
-        kDefaultHUD.progressIndicator is ProgressIndicator ||
-            kDefaultHUD.progressIndicator is CupertinoActivityIndicator,
-        true);
+    expect(kDefaultHUD.progressIndicator is hud.ProgressIndicator, true);
     expect(kDefaultHUD.color, Colors.black);
     expect(kDefaultHUD.opacity, 0.6);
     expect(kDefaultHUD.label, null);
