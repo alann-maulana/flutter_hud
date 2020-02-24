@@ -54,7 +54,10 @@ class PopupHUD {
   Future<void> show() => Navigator.push(context, _popupHUD);
 
   /// Dismiss current showing [PopupHUD] from the top of current [Navigator]
-  bool dismiss() => Navigator.pop(context);
+  bool dismiss() {
+    Navigator.pop(context);
+    return true;
+  }
 }
 
 class _PopupHUD extends ModalRoute<void> {
