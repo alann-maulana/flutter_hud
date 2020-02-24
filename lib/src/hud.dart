@@ -4,7 +4,7 @@ import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
 
 /// Class for managing progress HUD template
 class HUD {
-  /// Initialize progress HUD tempalte
+  /// Initialize progress HUD template
   HUD({
     Widget progressIndicator,
     this.color = Colors.black,
