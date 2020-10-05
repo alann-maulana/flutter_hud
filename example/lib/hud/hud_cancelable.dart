@@ -64,19 +64,19 @@ class _HUDWithCancelableState extends State<HUDWithCancelable> {
                 Text(
                   'The first 10 primes :',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               if (!showHUD && !canceled)
                 Text(
                   resultPrimes,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle,
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
               if (!showHUD && canceled)
                 Text(
                   'Process canceled',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.display1,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
             ],
           ),

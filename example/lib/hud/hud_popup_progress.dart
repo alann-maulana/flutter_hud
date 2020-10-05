@@ -56,13 +56,13 @@ class _HUDPopupProgressState extends State<HUDPopupProgress> {
               Text(
                 'The first 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
             if (resultPrimes != null)
               Text(
                 resultPrimes,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle,
+                style: Theme.of(context).textTheme.subtitle2,
               ),
           ],
         ),

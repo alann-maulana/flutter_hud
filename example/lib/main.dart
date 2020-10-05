@@ -57,8 +57,7 @@ class HUDList extends StatelessWidget {
             ),
             TileItem(
               label: HUDWidgetProgress.title,
-              description:
-                  '"${HUDWithLabelDetail.title}" with progress',
+              description: '"${HUDWithLabelDetail.title}" with progress',
               builder: (context) => HUDWidgetProgress(),
             ),
             TileGroup('HUD POPUP'),

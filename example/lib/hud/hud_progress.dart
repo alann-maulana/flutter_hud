@@ -29,7 +29,7 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
     }
 
     final number = await getPrimes(delayedSeconds: 1);
-    for (int i=1; i<=10; i++) {
+    for (int i = 1; i <= 10; i++) {
       await Future.delayed(Duration(milliseconds: 500));
       if (mounted) {
         setState(() {
@@ -56,7 +56,9 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
       value: value,
       hud: HUD(
         label: 'Generating Primes',
-        detailLabel: value == null ? 'Initializing..' : 'Progress ${(value * 100).toInt()}%',
+        detailLabel: value == null
+            ? 'Initializing..'
+            : 'Progress ${(value * 100).toInt()}%',
       ),
       builder: (context) => Scaffold(
         appBar: AppBar(
@@ -70,22 +72,22 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
                 Text(
                   'The first 10 primes :',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               if (!showHUD)
                 Text(
                   resultPrimes,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle,
+                  style: Theme.of(context).textTheme.subtitle2,
                 ),
             ],
           ),
         ),
         floatingActionButton: !showHUD
             ? FloatingActionButton(
-          child: Icon(Icons.refresh),
-          onPressed: _reload,
-        )
+                child: Icon(Icons.refresh),
+                onPressed: _reload,
+              )
             : null,
       ),
       showHUD: showHUD,

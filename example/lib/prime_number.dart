@@ -35,7 +35,6 @@ Iterable<int> primesMap() {
   return [2].followedBy(oddPrimes());
 }
 
-
 Future<String> getPrimes({int delayedSeconds = 2}) async {
   await Future.delayed(Duration(seconds: delayedSeconds));
   return primesMap().take(10).join(', ');

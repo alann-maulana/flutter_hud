@@ -68,14 +68,14 @@ class WidgetHUD extends StatelessWidget {
                   Text(
                     hud.label,
                     style: hud.labelStyle ??
-                        textTheme.title.copyWith(color: Colors.white),
+                        textTheme.headline6.copyWith(color: Colors.white),
                   ),
                 if (hud.detailLabel != null) SizedBox(height: 4),
                 if (hud.detailLabel != null)
                   Text(
                     hud.detailLabel,
                     style: hud.detailLabelStyle ??
-                        textTheme.subtitle.copyWith(color: Colors.white70),
+                        textTheme.subtitle2.copyWith(color: Colors.white70),
                   ),
                 if (onCancel != null) SizedBox(height: 16),
                 if (onCancel != null) CancelButton(onCancel: onCancel),

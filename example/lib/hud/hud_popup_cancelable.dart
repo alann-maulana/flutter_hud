@@ -87,43 +87,43 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
               Text(
                 'The first 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
             if (resultPrimes1 != null)
               Text(
                 resultPrimes1,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle,
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             if (resultPrimes2 != null)
               Text(
                 'The second 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
             if (resultPrimes2 != null)
               Text(
                 resultPrimes2,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle,
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             if (resultPrimes3 != null)
               Text(
                 'The third 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
               ),
             if (resultPrimes3 != null)
               Text(
                 resultPrimes3,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle,
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             if (canceled)
               Text(
                 'Process canceled',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.headline4,
               ),
           ],
         ),

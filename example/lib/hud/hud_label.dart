@@ -24,13 +24,13 @@ class HUDWithLabel extends StatelessWidget {
                     Text(
                       'The first 10 primes :',
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                   if (snapshot.hasData)
                     Text(
                       snapshot.data,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.subtitle,
+                      style: Theme.of(context).textTheme.subtitle2,
                     ),
                 ],
               ),
