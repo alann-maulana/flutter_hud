@@ -1,4 +1,6 @@
-## [0.2.1] - Dec 16, 2019   
+## [0.2.2] - Oct 5, 2020
+
+## [0.2.1] - Dec 16, 2019
 
 * Adding compatibility to Web
 
