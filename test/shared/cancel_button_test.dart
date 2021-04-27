@@ -5,8 +5,9 @@ import 'package:flutter_hud/src/shared/html/cancel_button.dart' as html;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('IO Android cancel button with "Cancel" text',
-      (WidgetTester tester) async {
+  testWidgets('IO Android cancel button with "Cancel" text', (
+    WidgetTester tester,
+  ) async {
     debugDefaultTargetPlatformOverride = TargetPlatform.android;
     await tester.pumpWidget(
       CancelButton(),
@@ -17,8 +18,9 @@ void main() {
     debugDefaultTargetPlatformOverride = null;
   });
 
-  testWidgets('IO Android cancel button with "onCancel" handler',
-      (WidgetTester tester) async {
+  testWidgets('IO Android cancel button with "onCancel" handler', (
+    WidgetTester tester,
+  ) async {
     debugDefaultTargetPlatformOverride = TargetPlatform.android;
     var canceled = false;
     await tester.pumpWidget(
@@ -41,8 +43,9 @@ void main() {
     debugDefaultTargetPlatformOverride = null;
   });
 
-  testWidgets('IO iOS cancel button with "Cancel" text',
-      (WidgetTester tester) async {
+  testWidgets('IO iOS cancel button with "Cancel" text', (
+    WidgetTester tester,
+  ) async {
     debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
     await tester.pumpWidget(
       CancelButton(),
@@ -53,8 +56,9 @@ void main() {
     debugDefaultTargetPlatformOverride = null;
   });
 
-  testWidgets('IO iOS cancel button with "onCancel" handler',
-      (WidgetTester tester) async {
+  testWidgets('IO iOS cancel button with "onCancel" handler', (
+    WidgetTester tester,
+  ) async {
     debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
     var canceled = false;
     await tester.pumpWidget(
@@ -77,8 +81,9 @@ void main() {
     debugDefaultTargetPlatformOverride = null;
   });
 
-  testWidgets('HTML cancel button with "Cancel" text',
-      (WidgetTester tester) async {
+  testWidgets('HTML cancel button with "Cancel" text', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       html.CancelButton(),
     );
@@ -87,8 +92,9 @@ void main() {
     expect(bodyFinder, findsOneWidget);
   });
 
-  testWidgets('HTML cancel button with "onCancel" handler',
-      (WidgetTester tester) async {
+  testWidgets('HTML cancel button with "onCancel" handler', (
+    WidgetTester tester,
+  ) async {
     var canceled = false;
     await tester.pumpWidget(
       MaterialApp(

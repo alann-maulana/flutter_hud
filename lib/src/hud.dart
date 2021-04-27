@@ -6,7 +6,7 @@ import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
 class HUD {
   /// Initialize progress HUD template
   HUD({
-    Widget progressIndicator,
+    Widget? progressIndicator,
     this.color = Colors.black,
     this.opacity = 0.6,
     this.label,
@@ -26,16 +26,16 @@ class HUD {
   final double opacity;
 
   /// The label displayed below [progressIndicator]
-  final String label;
+  final String? label;
 
   /// The [TextStyle] used by [label]
-  final TextStyle labelStyle;
+  final TextStyle? labelStyle;
 
   /// The detail label displayed below [label]
-  final String detailLabel;
+  final String? detailLabel;
 
   /// The [TextStyle] used by [detailLabel]
-  final TextStyle detailLabelStyle;
+  final TextStyle? detailLabelStyle;
 
   /// The widget used by progress HUD
   final Widget progressIndicator;

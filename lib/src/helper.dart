@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 
-Widget showOrUpdateProgressIndicator(HUD hud, double value) {
+Widget showOrUpdateProgressIndicator(HUD hud, double? value) {
   if (value == null) {
     return hud.progressIndicator;
   }
 
   if (hud.progressIndicator is CircularProgressIndicator) {
-    CircularProgressIndicator old = hud.progressIndicator;
+    CircularProgressIndicator old =
+        hud.progressIndicator as CircularProgressIndicator;
     return CircularProgressIndicator(
       key: old.key,
       value: value,
@@ -21,7 +22,8 @@ Widget showOrUpdateProgressIndicator(HUD hud, double value) {
   }
 
   if (hud.progressIndicator is LinearProgressIndicator) {
-    LinearProgressIndicator old = hud.progressIndicator;
+    LinearProgressIndicator old =
+        hud.progressIndicator as LinearProgressIndicator;
     return LinearProgressIndicator(
       key: old.key,
       value: value,

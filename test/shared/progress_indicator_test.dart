@@ -28,10 +28,12 @@ void main() {
   });
 
   testWidgets('IO iOS Progress indicator', (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
-      theme: ThemeData(platform: TargetPlatform.iOS),
-      home: hud.ProgressIndicator(),
-    ));
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: ThemeData(platform: TargetPlatform.iOS),
+        home: hud.ProgressIndicator(),
+      ),
+    );
 
     final bodyFinder = find.byType(hud.ProgressIndicator);
     final cupertinoThemeFinder = find.byType(CupertinoTheme);

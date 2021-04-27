@@ -9,19 +9,18 @@ import 'package:flutter_hud/src/shared/cancel_button.dart';
 class WidgetHUD extends StatelessWidget {
   /// Initialize [WidgetHUD]
   WidgetHUD({
-    @required this.builder,
+    required this.builder,
     this.onCancel,
     this.showHUD = false,
     this.value,
-    HUD hud,
-  })  : assert(builder != null),
-        hud = hud ??= HUD.kDefaultHUD;
+    HUD? hud,
+  }) : hud = hud ??= HUD.kDefaultHUD;
 
   /// The template of [WidgetHUD]
   final HUD hud;
 
   /// Set [onCancel] to enable canceling process and dismissing progress HUD
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   /// The main body of [Widget] to display
   final WidgetBuilder builder;
@@ -36,7 +35,7 @@ class WidgetHUD extends StatelessWidget {
   /// If null, this progress indicator is indeterminate, which means the
   /// indicator displays a predetermined animation that does not indicate how
   /// much actual progress is being made.
-  final double value;
+  final double? value;
 
   @override
   Widget build(BuildContext context) {
@@ -66,19 +65,19 @@ class WidgetHUD extends StatelessWidget {
                 if (hud.label != null) SizedBox(height: 8),
                 if (hud.label != null)
                   Text(
-                    hud.label,
+                    hud.label!,
                     style: hud.labelStyle ??
-                        textTheme.headline6.copyWith(color: Colors.white),
+                        textTheme.headline6!.copyWith(color: Colors.white),
                   ),
                 if (hud.detailLabel != null) SizedBox(height: 4),
                 if (hud.detailLabel != null)
                   Text(
-                    hud.detailLabel,
+                    hud.detailLabel!,
                     style: hud.detailLabelStyle ??
-                        textTheme.subtitle2.copyWith(color: Colors.white70),
+                        textTheme.subtitle2!.copyWith(color: Colors.white70),
                   ),
                 if (onCancel != null) SizedBox(height: 16),
-                if (onCancel != null) CancelButton(onCancel: onCancel),
+                if (onCancel != null) CancelButton(onCancel: onCancel!),
               ],
             ),
           ),
