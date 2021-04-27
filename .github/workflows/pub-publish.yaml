@@ -1,0 +1,32 @@
+name: Pub Publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Publishing
+    runs-on: ubuntu-latest
+    env:
+      PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.5'
+          channel: 'stable'
+      - name: Documenting package
+        run: |
+          echo "FLUTTER_ROOT=$FLUTTER_HOME" >> $GITHUB_ENV
+          bash scripts/credentials.sh
+          rm -rf scripts/
+          make
+          make deps
+          pub global activate dartdoc
+          make docs
+          pub publish -f -v
