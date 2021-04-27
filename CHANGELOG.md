@@ -1,3 +1,7 @@
+## [0.3.0] - Apr 28, 2021
+* Migrate to null safety
+* Upgrade Flutter
+
 ## [0.2.2] - Oct 5, 2020
 
 ## [0.2.1] - Dec 16, 2019
