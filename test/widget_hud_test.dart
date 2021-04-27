@@ -156,10 +156,10 @@ void main() {
     expect(canceled, isTrue);
   });
 
-  double value;
+  double? value;
   testWidgets('CircularProgressIndicator HUD with label and progress shown',
       (WidgetTester tester) async {
-    StateSetter setStater;
+    late StateSetter setStater;
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(

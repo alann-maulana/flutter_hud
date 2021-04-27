@@ -9,8 +9,8 @@ class PopupHUD {
   /// Initialize [PopupHUD]
   PopupHUD(
     this.context, {
-    VoidCallback onCancel,
-    HUD hud,
+    VoidCallback? onCancel,
+    HUD? hud,
   }) : _popupHUD = _PopupHUD(
           hud: hud ??= HUD.kDefaultHUD,
           onCancel: onCancel,
@@ -27,7 +27,7 @@ class PopupHUD {
   /// If null, this progress indicator is indeterminate, which means the
   /// indicator displays a predetermined animation that does not indicate how
   /// much actual progress is being made.
-  double get value => _popupHUD._value;
+  double? get value => _popupHUD._value;
 
   /// Update the displayed progress HUD value
   void setValue(double value) {
@@ -35,7 +35,7 @@ class PopupHUD {
   }
 
   /// Return progress HUD label text
-  String get label => _popupHUD._label;
+  String? get label => _popupHUD._label;
 
   /// Update the displayed progress HUD label
   void setLabel(String label) {
@@ -43,7 +43,7 @@ class PopupHUD {
   }
 
   /// Return progress HUD detail label text
-  String get detailLabel => _popupHUD._detailLabel;
+  String? get detailLabel => _popupHUD._detailLabel;
 
   /// Update the displayed progress HUD detail label
   void setDetailLabel(String detail) {
@@ -63,19 +63,19 @@ class PopupHUD {
 class _PopupHUD extends ModalRoute<void> {
   _PopupHUD({
     this.onCancel,
-    HUD hud,
-  }) : _hud = hud ??= HUD.kDefaultHUD {
+    required HUD hud,
+  }) : _hud = hud {
     this._label = _hud.label;
     this._detailLabel = _hud.detailLabel;
   }
 
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
   final HUD _hud;
-  double _value;
-  String _label;
-  String _detailLabel;
+  double? _value;
+  String? _label;
+  String? _detailLabel;
 
-  StateSetter _setStateValue, _setStateLabel, _setStateDetailLabel;
+  StateSetter? _setStateValue, _setStateLabel, _setStateDetailLabel;
 
   @override
   Color get barrierColor => _hud.color.withOpacity(_hud.opacity);
@@ -84,7 +84,7 @@ class _PopupHUD extends ModalRoute<void> {
   bool get barrierDismissible => false;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
@@ -108,9 +108,9 @@ class _PopupHUD extends ModalRoute<void> {
 
         if (_showLabel) {
           return Text(
-            _label,
+            _label!,
             style: _hud.labelStyle ??
-                Theme.of(context).textTheme.headline6.copyWith(
+                Theme.of(context).textTheme.headline6!.copyWith(
                       color: Colors.white,
                     ),
           );
@@ -124,9 +124,9 @@ class _PopupHUD extends ModalRoute<void> {
 
         if (_showDetailLabel) {
           return Text(
-            _detailLabel,
+            _detailLabel!,
             style: _hud.detailLabelStyle ??
-                Theme.of(context).textTheme.subtitle2.copyWith(
+                Theme.of(context).textTheme.subtitle2!.copyWith(
                       color: Colors.white70,
                     ),
           );
@@ -135,7 +135,10 @@ class _PopupHUD extends ModalRoute<void> {
         return SizedBox.shrink();
       }),
       if (onCancel != null) SizedBox(height: 16),
-      if (onCancel != null) CancelButton(onCancel: onCancel),
+      if (onCancel != null)
+        CancelButton(onCancel: () {
+          canceled(context);
+        }),
     ];
 
     return Material(
@@ -155,7 +158,7 @@ class _PopupHUD extends ModalRoute<void> {
   void canceled(BuildContext context) {
     Navigator.pop(context);
     if (onCancel != null) {
-      onCancel();
+      onCancel!();
     }
   }
 
@@ -168,14 +171,14 @@ class _PopupHUD extends ModalRoute<void> {
   @override
   Duration get transitionDuration => Duration(milliseconds: 500);
 
-  bool get _showLabel => _label != null && _label.isNotEmpty;
+  bool get _showLabel => _label != null && _label!.isNotEmpty;
 
-  bool get _showDetailLabel => _detailLabel != null && _detailLabel.isNotEmpty;
+  bool get _showDetailLabel => _detailLabel != null && _detailLabel!.isNotEmpty;
 
-  void setValue(double value) {
+  void setValue(double? value) {
     assert(value == null || (value >= 0 && value <= 1.0));
     if (_setStateValue != null) {
-      _setStateValue(() {
+      _setStateValue!(() {
         this._value = value;
       });
     }
@@ -183,7 +186,7 @@ class _PopupHUD extends ModalRoute<void> {
 
   void setLabel(String label) {
     if (_setStateLabel != null) {
-      _setStateLabel(() {
+      _setStateLabel!(() {
         this._label = label;
       });
     }
@@ -191,7 +194,7 @@ class _PopupHUD extends ModalRoute<void> {
 
   void setDetailLabel(String detail) {
     if (_setStateLabel != null) {
-      _setStateDetailLabel(() {
+      _setStateDetailLabel!(() {
         this._detailLabel = detail;
       });
     }

@@ -8,7 +8,7 @@ import '../html/cancel_button.dart' as cb;
 class CancelButton extends StatelessWidget {
   CancelButton({this.onCancel});
 
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   @override
   Widget build(BuildContext context) {

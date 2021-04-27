@@ -41,13 +41,13 @@ void main() {
     expect(customHUD.opacity, 0.7);
     expect(customHUD.label, 'Loading...');
     expect(customHUD.labelStyle != null, true);
-    expect(customHUD.labelStyle.fontWeight, FontWeight.bold);
-    expect(customHUD.labelStyle.fontSize, 18.0);
-    expect(customHUD.labelStyle.color, Colors.black);
+    expect(customHUD.labelStyle!.fontWeight, FontWeight.bold);
+    expect(customHUD.labelStyle!.fontSize, 18.0);
+    expect(customHUD.labelStyle!.color, Colors.black);
     expect(customHUD.detailLabel, 'Please Wait...');
     expect(customHUD.detailLabelStyle != null, true);
-    expect(customHUD.detailLabelStyle.fontWeight, FontWeight.normal);
-    expect(customHUD.detailLabelStyle.fontSize, 15.0);
-    expect(customHUD.detailLabelStyle.color, Colors.black54);
+    expect(customHUD.detailLabelStyle!.fontWeight, FontWeight.normal);
+    expect(customHUD.detailLabelStyle!.fontSize, 15.0);
+    expect(customHUD.detailLabelStyle!.color, Colors.black54);
   });
 }
