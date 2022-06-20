@@ -5,6 +5,8 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDWithLabel extends StatelessWidget {
   static const String title = 'HUD with Label';
 
+  const HUDWithLabel({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
@@ -14,7 +16,7 @@ class HUDWithLabel extends StatelessWidget {
           hud: HUD(label: 'Generating Primes'),
           builder: (context) => Scaffold(
             appBar: AppBar(
-              title: Text(title),
+              title: const Text(title),
             ),
             body: Center(
               child: Column(
@@ -28,7 +30,7 @@ class HUDWithLabel extends StatelessWidget {
                     ),
                   if (snapshot.hasData)
                     Text(
-                      snapshot.data,
+                      snapshot.data!,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),

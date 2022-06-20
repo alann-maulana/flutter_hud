@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
-import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
+import 'package:flutter_hud/src/progress_indicator.dart' as hud;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -19,17 +18,17 @@ void main() {
 
   test('test custom HUD', () {
     final customHUD = HUD(
-      progressIndicator: LinearProgressIndicator(),
+      progressIndicator: const LinearProgressIndicator(),
       color: Colors.grey,
       opacity: 0.7,
       label: 'Loading...',
-      labelStyle: TextStyle(
+      labelStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18.0,
         color: Colors.black,
       ),
       detailLabel: 'Please Wait...',
-      detailLabelStyle: TextStyle(
+      detailLabelStyle: const TextStyle(
         fontWeight: FontWeight.normal,
         fontSize: 15.0,
         color: Colors.black54,

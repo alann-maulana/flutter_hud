@@ -7,7 +7,7 @@ void main() {
   testWidgets('Default HUD not shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       WidgetHUD(
-        builder: (BuildContext context) => MaterialApp(
+        builder: (BuildContext context) => const MaterialApp(
           home: Text('This is body'),
         ),
       ),
@@ -21,7 +21,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
-          builder: (BuildContext context) => Text('This is body'),
+          builder: (BuildContext context) => const Text('This is body'),
           showHUD: true,
         ),
       ),
@@ -41,8 +41,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
-          hud: HUD(progressIndicator: CircularProgressIndicator()),
-          builder: (BuildContext context) => Text('This is body'),
+          hud: HUD(progressIndicator: const CircularProgressIndicator()),
+          builder: (BuildContext context) => const Text('This is body'),
           showHUD: true,
         ),
       ),
@@ -60,8 +60,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
-          hud: HUD(progressIndicator: CupertinoActivityIndicator()),
-          builder: (BuildContext context) => Text('This is body'),
+          hud: HUD(progressIndicator: const CupertinoActivityIndicator()),
+          builder: (BuildContext context) => const Text('This is body'),
           showHUD: true,
         ),
       ),
@@ -80,10 +80,10 @@ void main() {
       MaterialApp(
         home: WidgetHUD(
           hud: HUD(
-            progressIndicator: CircularProgressIndicator(),
+            progressIndicator: const CircularProgressIndicator(),
             label: 'Loading...',
           ),
-          builder: (BuildContext context) => Text('This is body'),
+          builder: (BuildContext context) => const Text('This is body'),
           showHUD: true,
         ),
       ),
@@ -104,11 +104,11 @@ void main() {
       MaterialApp(
         home: WidgetHUD(
           hud: HUD(
-            progressIndicator: CircularProgressIndicator(),
+            progressIndicator: const CircularProgressIndicator(),
             label: 'Loading...',
             detailLabel: 'Please wait',
           ),
-          builder: (BuildContext context) => Text('This is body'),
+          builder: (BuildContext context) => const Text('This is body'),
           showHUD: true,
         ),
       ),
@@ -132,12 +132,12 @@ void main() {
       MaterialApp(
         home: WidgetHUD(
           hud: HUD(
-            progressIndicator: CircularProgressIndicator(),
+            progressIndicator: const CircularProgressIndicator(),
           ),
           onCancel: () {
             canceled = true;
           },
-          builder: (BuildContext context) => Text('This is body'),
+          builder: (BuildContext context) => const Text('This is body'),
           showHUD: true,
         ),
       ),
@@ -168,11 +168,11 @@ void main() {
               setStater = setState;
               return WidgetHUD(
                 hud: HUD(
-                  progressIndicator: CircularProgressIndicator(),
+                  progressIndicator: const CircularProgressIndicator(),
                   label: value == null ? 'Initializing' : 'Processing',
                 ),
                 value: value,
-                builder: (BuildContext context) => Text('This is body'),
+                builder: (BuildContext context) => const Text('This is body'),
                 showHUD: true,
               );
             },
@@ -183,7 +183,7 @@ void main() {
                 value = 0.5;
               });
             },
-            child: Icon(Icons.refresh),
+            child: const Icon(Icons.refresh),
           ),
         ),
       ),

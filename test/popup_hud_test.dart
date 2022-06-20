@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,14 +7,14 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Text('This is body'),
+          body: const Text('This is body'),
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
                 final popup = PopupHUD(context);
                 await popup.show();
               },
-              child: Icon(Icons.refresh),
+              child: const Icon(Icons.refresh),
             );
           }),
         ),
@@ -37,19 +36,19 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Text('This is body'),
+          body: const Text('This is body'),
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
                 final popup = PopupHUD(
                   context,
                   hud: HUD(
-                    progressIndicator: CircularProgressIndicator(),
+                    progressIndicator: const CircularProgressIndicator(),
                   ),
                 );
                 await popup.show();
               },
-              child: Icon(Icons.refresh),
+              child: const Icon(Icons.refresh),
             );
           }),
         ),
@@ -72,20 +71,20 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Text('This is body'),
+          body: const Text('This is body'),
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
                 popup = PopupHUD(
                   context,
                   hud: HUD(
-                    progressIndicator: CircularProgressIndicator(),
+                    progressIndicator: const CircularProgressIndicator(),
                     label: 'Loading..',
                   ),
                 );
                 await popup.show();
               },
-              child: Icon(Icons.refresh),
+              child: const Icon(Icons.refresh),
             );
           }),
         ),
@@ -115,21 +114,21 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Text('This is body'),
+          body: const Text('This is body'),
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
                 popup = PopupHUD(
                   context,
                   hud: HUD(
-                    progressIndicator: CircularProgressIndicator(),
+                    progressIndicator: const CircularProgressIndicator(),
                     label: 'Loading..',
                     detailLabel: 'Please wait',
                   ),
                 );
                 await popup.show();
               },
-              child: Icon(Icons.refresh),
+              child: const Icon(Icons.refresh),
             );
           }),
         ),
@@ -171,14 +170,14 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Text('This is body'),
+          body: const Text('This is body'),
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
               onPressed: () async {
                 final popup = PopupHUD(
                   context,
                   hud: HUD(
-                    progressIndicator: CircularProgressIndicator(),
+                    progressIndicator: const CircularProgressIndicator(),
                   ),
                   onCancel: () {
                     canceled = true;
@@ -186,7 +185,7 @@ void main() {
                 );
                 await popup.show();
               },
-              child: Icon(Icons.refresh),
+              child: const Icon(Icons.refresh),
             );
           }),
         ),
@@ -218,19 +217,19 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: Text('This is body'),
+          body: const Text('This is body'),
           floatingActionButton: Builder(builder: (context) {
             popup = PopupHUD(
               context,
               hud: HUD(
-                progressIndicator: CircularProgressIndicator(),
+                progressIndicator: const CircularProgressIndicator(),
               ),
             );
             return FloatingActionButton(
               onPressed: () async {
                 await popup.show();
               },
-              child: Icon(Icons.exposure_plus_1),
+              child: const Icon(Icons.exposure_plus_1),
             );
           }),
         ),

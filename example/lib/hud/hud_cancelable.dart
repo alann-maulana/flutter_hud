@@ -5,14 +5,16 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDWithCancelable extends StatefulWidget {
   static const String title = 'HUD with Cancelable';
 
+  const HUDWithCancelable({Key? key}) : super(key: key);
+
   @override
-  _HUDWithCancelableState createState() => _HUDWithCancelableState();
+  State<HUDWithCancelable> createState() => _HUDWithCancelableState();
 }
 
 class _HUDWithCancelableState extends State<HUDWithCancelable> {
   bool showHUD = true;
   bool canceled = false;
-  String resultPrimes;
+  String? resultPrimes;
 
   @override
   void initState() {
@@ -54,7 +56,7 @@ class _HUDWithCancelableState extends State<HUDWithCancelable> {
       },
       builder: (context) => Scaffold(
         appBar: AppBar(
-          title: Text(HUDWithCancelable.title),
+          title: const Text(HUDWithCancelable.title),
         ),
         body: Center(
           child: Column(
@@ -66,9 +68,9 @@ class _HUDWithCancelableState extends State<HUDWithCancelable> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline6,
                 ),
-              if (!showHUD && !canceled)
+              if (resultPrimes != null)
                 Text(
-                  resultPrimes,
+                  resultPrimes!,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
@@ -83,8 +85,8 @@ class _HUDWithCancelableState extends State<HUDWithCancelable> {
         ),
         floatingActionButton: !showHUD || canceled
             ? FloatingActionButton(
-                child: Icon(Icons.refresh),
                 onPressed: _reload,
+                child: const Icon(Icons.refresh),
               )
             : null,
       ),

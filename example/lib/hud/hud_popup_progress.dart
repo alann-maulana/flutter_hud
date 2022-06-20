@@ -5,12 +5,14 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDPopupProgress extends StatefulWidget {
   static const String title = 'HUD Popup with Progress';
 
+  const HUDPopupProgress({Key? key}) : super(key: key);
+
   @override
-  _HUDPopupProgressState createState() => _HUDPopupProgressState();
+  State<HUDPopupProgress> createState() => _HUDPopupProgressState();
 }
 
 class _HUDPopupProgressState extends State<HUDPopupProgress> {
-  String resultPrimes;
+  String? resultPrimes;
 
   _reload() async {
     setState(() {
@@ -27,13 +29,13 @@ class _HUDPopupProgressState extends State<HUDPopupProgress> {
     popup.show();
     final number = await getPrimes(delayedSeconds: 1);
     for (int i = 1; i <= 10; i++) {
-      await Future.delayed(Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 500));
       final value = i * 0.10;
       popup.setValue(value);
       popup.setDetailLabel('Progress ${(value * 100).toInt()}%..');
     }
 
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     popup.dismiss();
     if (mounted) {
       setState(() {
@@ -43,10 +45,19 @@ class _HUDPopupProgressState extends State<HUDPopupProgress> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _reload();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(HUDPopupProgress.title),
+        title: const Text(HUDPopupProgress.title),
       ),
       body: Center(
         child: Column(
@@ -60,7 +71,7 @@ class _HUDPopupProgressState extends State<HUDPopupProgress> {
               ),
             if (resultPrimes != null)
               Text(
-                resultPrimes,
+                resultPrimes!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -68,8 +79,8 @@ class _HUDPopupProgressState extends State<HUDPopupProgress> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
         onPressed: _reload,
+        child: const Icon(Icons.refresh),
       ),
     );
   }

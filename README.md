@@ -1,4 +1,4 @@
-# Flutter HUD 
+# Flutter HUD
 
 [![Pub](https://img.shields.io/pub/v/flutter_hud)](https://pub.dev/packages/flutter_hud) [![Build](https://github.com/eyro-labs/flutter_hud/workflows/Flutter%20CI/badge.svg)](https://github.com/eyro-labs/flutter_hud/actions?query=workflow%3A%22Flutter+CI%22) [![Coverage Status](https://coveralls.io/repos/github/eyro-labs/flutter_hud/badge.svg?branch=master)](https://coveralls.io/github/eyro-labs/flutter_hud?branch=master) [![GitHub](https://img.shields.io/github/license/eyro-labs/flutter_hud?color=2196F3)](https://github.com/eyro-labs/flutter_hud/blob/master/LICENSE) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feyro-labs%2Fflutter_hud?ref=badge_shield)
 
@@ -18,12 +18,12 @@ dependencies:
 ```
 
 ## Import Library
-```dart   
+```dart
 import 'package:flutter_hud/flutter_hud.dart';
 ```
 
 ## Widget HUD
-Simple use of progress Widget HUD with `FutureBuilder`: 
+Simple use of progress Widget HUD with `FutureBuilder`:
 1. Default HUD
 ```dart
 FutureBuilder<String>(
@@ -72,7 +72,7 @@ FutureBuilder<String>(
   builder: (context, snapshot) {
     return WidgetHUD(
       hud: HUD(
-        label: 'Executing Http Request', 
+        label: 'Executing Http Request',
         detailLabel: 'Please Wait a Moment',
       ),
       builder: (context) => Scaffold(
@@ -219,19 +219,19 @@ Please see folder [example/lib](https://github.com/eyro-labs/flutter_hud/tree/ma
 
 ## Widget HUD Demo
 
-| [Widget HUD][1.hud-default]            | [Widget HUD with Label][2.hud-with-label]    | [Widget HUD with Label and Detail][3.hud-with-label-detail]      | 
-| -------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------- | 
-| ![HUD Default][1.hud-default.gif]      | ![HUD with Label][2.hud-with-label.gif]      | ![HUD Default][3.hud-with-label-detail.gif]                      |  
+| [Widget HUD][1.hud-default]            | [Widget HUD with Label][2.hud-with-label]    | [Widget HUD with Label and Detail][3.hud-with-label-detail]      |
+| -------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------- |
+| ![HUD Default][1.hud-default.gif]      | ![HUD with Label][2.hud-with-label.gif]      | ![HUD Default][3.hud-with-label-detail.gif]                      |
 
-| [Widget HUD with Cancelable][4.hud-with-cancelable]  | [Widget HUD with Progress][7.hud-progress]  |   | 
-| ---------------------------------------------------- | ------------------------------------------- | - | 
-| ![HUD with Cancelable][4.hud-with-cancelable.gif]    | ![HUD with Progress][7.hud-progress.gif]    |   |  
+| [Widget HUD with Cancelable][4.hud-with-cancelable]  | [Widget HUD with Progress][7.hud-progress]  |   |
+| ---------------------------------------------------- | ------------------------------------------- | - |
+| ![HUD with Cancelable][4.hud-with-cancelable.gif]    | ![HUD with Progress][7.hud-progress.gif]    |   |
 
 ## Widget HUD Popup
 
-| [Popup HUD][5.hud-popup]               | [Popup HUD with Cancelable][6.hud-popup-cancelable]      | [Popup HUD with Progress][8.hud-popup-progress] | 
-| -------------------------------------- | -------------------------------------------------------- | ----------------------------------------------- | 
-| ![HUD Popup Default][5.hud-popup.gif]  | ![HUD Popup with Cancelable][6.hud-popup-cancelable.gif] | ![HUD Popup Progress][8.hud-popup-progress.gif] |  
+| [Popup HUD][5.hud-popup]               | [Popup HUD with Cancelable][6.hud-popup-cancelable]      | [Popup HUD with Progress][8.hud-popup-progress] |
+| -------------------------------------- | -------------------------------------------------------- | ----------------------------------------------- |
+| ![HUD Popup Default][5.hud-popup.gif]  | ![HUD Popup with Cancelable][6.hud-popup-cancelable.gif] | ![HUD Popup Progress][8.hud-popup-progress.gif] |
 
 ## Author
 

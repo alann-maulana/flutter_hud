@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 import 'package:flutter_hud/src/helper.dart';
-import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
+import 'package:flutter_hud/src/progress_indicator.dart' as hud;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -24,14 +24,14 @@ void main() {
 
   test('test custom HUD', () {
     final widget = showOrUpdateProgressIndicator(
-      HUD(progressIndicator: CupertinoActivityIndicator()),
+      HUD(progressIndicator: const CupertinoActivityIndicator()),
       null,
     );
 
     expect(widget is CupertinoActivityIndicator, true);
 
     final widget2 = showOrUpdateProgressIndicator(
-      HUD(progressIndicator: CupertinoActivityIndicator()),
+      HUD(progressIndicator: const CupertinoActivityIndicator()),
       0.2,
     );
 
@@ -41,7 +41,7 @@ void main() {
 
   test('test custom HUD + value != null', () {
     final widget = showOrUpdateProgressIndicator(
-      HUD(progressIndicator: LinearProgressIndicator()),
+      HUD(progressIndicator: const LinearProgressIndicator()),
       0.1,
     );
 

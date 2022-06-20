@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
+import 'package:flutter_hud/src/cancel_button.dart';
 import 'package:flutter_hud/src/helper.dart';
-import 'package:flutter_hud/src/shared/cancel_button.dart';
 
 /// Class for managing progress HUD popup
 class PopupHUD {
@@ -65,8 +64,8 @@ class _PopupHUD extends ModalRoute<void> {
     this.onCancel,
     required HUD hud,
   }) : _hud = hud {
-    this._label = _hud.label;
-    this._detailLabel = _hud.detailLabel;
+    _label = _hud.label;
+    _detailLabel = _hud.detailLabel;
   }
 
   final VoidCallback? onCancel;
@@ -101,8 +100,8 @@ class _PopupHUD extends ModalRoute<void> {
           return showOrUpdateProgressIndicator(_hud, _value);
         }),
       ),
-      if (_showLabel) SizedBox(height: 8),
-      if (_showLabel) SizedBox(height: 8),
+      if (_showLabel) const SizedBox(height: 8),
+      if (_showLabel) const SizedBox(height: 8),
       StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
         _setStateLabel = setState;
 
@@ -116,9 +115,9 @@ class _PopupHUD extends ModalRoute<void> {
           );
         }
 
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       }),
-      if (_showDetailLabel) SizedBox(height: 4.0),
+      if (_showDetailLabel) const SizedBox(height: 4.0),
       StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
         _setStateDetailLabel = setState;
 
@@ -132,9 +131,9 @@ class _PopupHUD extends ModalRoute<void> {
           );
         }
 
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       }),
-      if (onCancel != null) SizedBox(height: 16),
+      if (onCancel != null) const SizedBox(height: 16),
       if (onCancel != null)
         CancelButton(onCancel: () {
           canceled(context);
@@ -144,7 +143,7 @@ class _PopupHUD extends ModalRoute<void> {
     return Material(
       type: MaterialType.transparency,
       child: SafeArea(
-        child: new Center(
+        child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,7 +168,7 @@ class _PopupHUD extends ModalRoute<void> {
   bool get opaque => false;
 
   @override
-  Duration get transitionDuration => Duration(milliseconds: 500);
+  Duration get transitionDuration => const Duration(milliseconds: 500);
 
   bool get _showLabel => _label != null && _label!.isNotEmpty;
 
@@ -179,7 +178,7 @@ class _PopupHUD extends ModalRoute<void> {
     assert(value == null || (value >= 0 && value <= 1.0));
     if (_setStateValue != null) {
       _setStateValue!(() {
-        this._value = value;
+        _value = value;
       });
     }
   }
@@ -187,7 +186,7 @@ class _PopupHUD extends ModalRoute<void> {
   void setLabel(String label) {
     if (_setStateLabel != null) {
       _setStateLabel!(() {
-        this._label = label;
+        _label = label;
       });
     }
   }
@@ -195,7 +194,7 @@ class _PopupHUD extends ModalRoute<void> {
   void setDetailLabel(String detail) {
     if (_setStateLabel != null) {
       _setStateDetailLabel!(() {
-        this._detailLabel = detail;
+        _detailLabel = detail;
       });
     }
   }

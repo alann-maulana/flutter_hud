@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hud/src/shared/progress_indicator.dart' as hud;
+import 'package:flutter_hud/src/progress_indicator.dart' as hud;
 
 /// Class for managing progress HUD template
 class HUD {

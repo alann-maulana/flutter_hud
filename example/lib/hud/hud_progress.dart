@@ -5,14 +5,16 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDWidgetProgress extends StatefulWidget {
   static const String title = 'HUD with Progress';
 
+  const HUDWidgetProgress({Key? key}) : super(key: key);
+
   @override
-  _HUDWidgetProgressState createState() => _HUDWidgetProgressState();
+  State<HUDWidgetProgress> createState() => _HUDWidgetProgressState();
 }
 
 class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
   bool showHUD = true;
-  double value;
-  String resultPrimes;
+  double? value;
+  String? resultPrimes;
 
   @override
   void initState() {
@@ -30,7 +32,7 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
 
     final number = await getPrimes(delayedSeconds: 1);
     for (int i = 1; i <= 10; i++) {
-      await Future.delayed(Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 500));
       if (mounted) {
         setState(() {
           value = i * 0.10;
@@ -40,7 +42,7 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
       }
     }
 
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     if (mounted) {
       setState(() {
         showHUD = false;
@@ -58,11 +60,11 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
         label: 'Generating Primes',
         detailLabel: value == null
             ? 'Initializing..'
-            : 'Progress ${(value * 100).toInt()}%',
+            : 'Progress ${(value! * 100).toInt()}%',
       ),
       builder: (context) => Scaffold(
         appBar: AppBar(
-          title: Text(HUDWidgetProgress.title),
+          title: const Text(HUDWidgetProgress.title),
         ),
         body: Center(
           child: Column(
@@ -74,9 +76,9 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline6,
                 ),
-              if (!showHUD)
+              if (resultPrimes != null)
                 Text(
-                  resultPrimes,
+                  resultPrimes!,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
@@ -85,8 +87,8 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
         ),
         floatingActionButton: !showHUD
             ? FloatingActionButton(
-                child: Icon(Icons.refresh),
                 onPressed: _reload,
+                child: const Icon(Icons.refresh),
               )
             : null,
       ),

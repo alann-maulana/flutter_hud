@@ -5,6 +5,8 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDDefault extends StatelessWidget {
   static const String title = 'HUD Default';
 
+  const HUDDefault({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
@@ -13,7 +15,7 @@ class HUDDefault extends StatelessWidget {
         return WidgetHUD(
           builder: (context) => Scaffold(
             appBar: AppBar(
-              title: Text(title),
+              title: const Text(title),
             ),
             body: Center(
               child: Column(
@@ -27,7 +29,7 @@ class HUDDefault extends StatelessWidget {
                     ),
                   if (snapshot.hasData)
                     Text(
-                      snapshot.data,
+                      snapshot.data!,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),

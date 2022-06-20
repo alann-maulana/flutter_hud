@@ -5,6 +5,8 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDWithLabelDetail extends StatelessWidget {
   static const String title = 'HUD with Label and Detail';
 
+  const HUDWithLabelDetail({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
@@ -17,7 +19,7 @@ class HUDWithLabelDetail extends StatelessWidget {
           ),
           builder: (context) => Scaffold(
             appBar: AppBar(
-              title: Text(title),
+              title: const Text(title),
             ),
             body: Center(
               child: Column(
@@ -31,7 +33,7 @@ class HUDWithLabelDetail extends StatelessWidget {
                     ),
                   if (snapshot.hasData)
                     Text(
-                      snapshot.data,
+                      snapshot.data!,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),

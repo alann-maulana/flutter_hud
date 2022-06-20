@@ -1,20 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hud/src/cancel_button.dart';
 import 'package:flutter_hud/src/helper.dart';
 import 'package:flutter_hud/src/hud.dart';
-import 'package:flutter_hud/src/shared/cancel_button.dart';
 
 /// Class for managing progress HUD widget
 // ignore: must_be_immutable
 class WidgetHUD extends StatelessWidget {
   /// Initialize [WidgetHUD]
   WidgetHUD({
+    Key? key,
     required this.builder,
     this.onCancel,
     this.showHUD = false,
     this.value,
     HUD? hud,
-  }) : hud = hud ??= HUD.kDefaultHUD;
+  })  : hud = hud ??= HUD.kDefaultHUD,
+        super(key: key);
 
   /// The template of [WidgetHUD]
   final HUD hud;
@@ -55,28 +56,28 @@ class WidgetHUD extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                if (onCancel != null) SizedBox(height: 32),
+                if (onCancel != null) const SizedBox(height: 32),
                 Container(
                   constraints: BoxConstraints(maxWidth: size.width * 0.6),
                   child: showOrUpdateProgressIndicator(hud, value),
                 ),
                 if (hud.label != null || hud.detailLabel != null)
-                  SizedBox(height: 8),
-                if (hud.label != null) SizedBox(height: 8),
+                  const SizedBox(height: 8),
+                if (hud.label != null) const SizedBox(height: 8),
                 if (hud.label != null)
                   Text(
                     hud.label!,
                     style: hud.labelStyle ??
                         textTheme.headline6!.copyWith(color: Colors.white),
                   ),
-                if (hud.detailLabel != null) SizedBox(height: 4),
+                if (hud.detailLabel != null) const SizedBox(height: 4),
                 if (hud.detailLabel != null)
                   Text(
                     hud.detailLabel!,
                     style: hud.detailLabelStyle ??
                         textTheme.subtitle2!.copyWith(color: Colors.white70),
                   ),
-                if (onCancel != null) SizedBox(height: 16),
+                if (onCancel != null) const SizedBox(height: 16),
                 if (onCancel != null) CancelButton(onCancel: onCancel!),
               ],
             ),

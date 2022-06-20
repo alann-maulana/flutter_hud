@@ -5,14 +5,16 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDUsingPopup extends StatefulWidget {
   static const String title = 'HUD using PopUp';
 
+  const HUDUsingPopup({Key? key}) : super(key: key);
+
   @override
-  _HUDUsingPopupState createState() => _HUDUsingPopupState();
+  State<HUDUsingPopup> createState() => _HUDUsingPopupState();
 }
 
 class _HUDUsingPopupState extends State<HUDUsingPopup> {
-  String resultPrimes1;
-  String resultPrimes2;
-  String resultPrimes3;
+  String? resultPrimes1;
+  String? resultPrimes2;
+  String? resultPrimes3;
 
   _reload() async {
     setState(() {
@@ -29,19 +31,19 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
     );
 
     popup.show();
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final primes1 = primesMap().take(10).join(', ');
 
     popup.setDetailLabel('Progress 33%...');
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final primes2 = primesMap().take(20).skip(10).join(', ');
 
     popup.setDetailLabel('Progress 66%...');
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final primes3 = primesMap().take(30).skip(20).join(', ');
 
     popup.setDetailLabel('Done 100%...');
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
 
     popup.dismiss();
     if (mounted) {
@@ -54,10 +56,19 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _reload();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(HUDUsingPopup.title),
+        title: const Text(HUDUsingPopup.title),
       ),
       body: Center(
         child: Column(
@@ -71,7 +82,7 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
               ),
             if (resultPrimes1 != null)
               Text(
-                resultPrimes1,
+                resultPrimes1!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -83,7 +94,7 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
               ),
             if (resultPrimes2 != null)
               Text(
-                resultPrimes2,
+                resultPrimes2!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -95,7 +106,7 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
               ),
             if (resultPrimes3 != null)
               Text(
-                resultPrimes3,
+                resultPrimes3!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -103,8 +114,8 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
         onPressed: _reload,
+        child: const Icon(Icons.refresh),
       ),
     );
   }

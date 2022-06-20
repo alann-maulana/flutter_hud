@@ -6,15 +6,16 @@ import 'package:example/hud/hud_popup.dart';
 import 'package:example/hud/hud_popup_cancelable.dart';
 import 'package:example/hud/hud_popup_progress.dart';
 import 'package:example/hud/hud_progress.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HUDList(),
     );
@@ -22,59 +23,61 @@ class MyApp extends StatelessWidget {
 }
 
 class HUDList extends StatelessWidget {
+  const HUDList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter HUD'),
+        title: const Text('Flutter HUD'),
       ),
       body: ListView(
         children: ListTile.divideTiles(
           context: context,
           tiles: <Widget>[
-            TileGroup('HUD WIDGET'),
+            const TileGroup('HUD WIDGET'),
             TileItem(
               label: HUDDefault.title,
               description: 'Show default centered activity indicator',
-              builder: (context) => HUDDefault(),
+              builder: (context) => const HUDDefault(),
             ),
             TileItem(
               label: HUDWithLabel.title,
               description: '"${HUDDefault.title}" with a label below',
-              builder: (context) => HUDWithLabel(),
+              builder: (context) => const HUDWithLabel(),
             ),
             TileItem(
               label: HUDWithLabelDetail.title,
               description:
                   '"${HUDDefault.title}" with label and detailed label below',
-              builder: (context) => HUDWithLabelDetail(),
+              builder: (context) => const HUDWithLabelDetail(),
             ),
             TileItem(
               label: HUDWithCancelable.title,
               description:
                   '"${HUDWithLabelDetail.title}" with cancelable button',
-              builder: (context) => HUDWithCancelable(),
+              builder: (context) => const HUDWithCancelable(),
             ),
             TileItem(
               label: HUDWidgetProgress.title,
               description: '"${HUDWithLabelDetail.title}" with progress',
-              builder: (context) => HUDWidgetProgress(),
+              builder: (context) => const HUDWidgetProgress(),
             ),
-            TileGroup('HUD POPUP'),
+            const TileGroup('HUD POPUP'),
             TileItem(
               label: HUDUsingPopup.title,
               description: 'Show HUD using `ModalRoute`',
-              builder: (context) => HUDUsingPopup(),
+              builder: (context) => const HUDUsingPopup(),
             ),
             TileItem(
               label: HUDUsingPopupCancelable.title,
               description: '"${HUDUsingPopup.title}" with cancelable options',
-              builder: (context) => HUDUsingPopupCancelable(),
+              builder: (context) => const HUDUsingPopupCancelable(),
             ),
             TileItem(
               label: HUDPopupProgress.title,
               description: '"${HUDUsingPopup.title}" with progress',
-              builder: (context) => HUDPopupProgress(),
+              builder: (context) => const HUDPopupProgress(),
             ),
           ].map((t) => t),
         ).toList(),
@@ -84,7 +87,7 @@ class HUDList extends StatelessWidget {
 }
 
 class TileGroup extends StatelessWidget {
-  TileGroup(this.header);
+  const TileGroup(this.header, {Key? key}) : super(key: key);
 
   final String header;
 
@@ -95,7 +98,7 @@ class TileGroup extends StatelessWidget {
       child: ListTile(
         title: Text(
           header.toUpperCase(),
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -105,11 +108,12 @@ class TileGroup extends StatelessWidget {
 }
 
 class TileItem extends StatelessWidget {
-  TileItem({
-    this.label,
-    this.description,
-    this.builder,
-  });
+  const TileItem({
+    Key? key,
+    required this.label,
+    required this.description,
+    required this.builder,
+  }) : super(key: key);
 
   final String label;
   final String description;
@@ -124,7 +128,7 @@ class TileItem extends StatelessWidget {
       ),
       title: Text(label),
       subtitle: Text(description),
-      trailing: Icon(Icons.chevron_right),
+      trailing: const Icon(Icons.chevron_right),
     );
   }
 }

@@ -5,15 +5,17 @@ import 'package:flutter_hud/flutter_hud.dart';
 class HUDUsingPopupCancelable extends StatefulWidget {
   static const String title = 'HUD PopUp with Cancelable';
 
+  const HUDUsingPopupCancelable({Key? key}) : super(key: key);
+
   @override
-  _HUDUsingPopupCancelableState createState() =>
+  State<HUDUsingPopupCancelable> createState() =>
       _HUDUsingPopupCancelableState();
 }
 
 class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
-  String resultPrimes1;
-  String resultPrimes2;
-  String resultPrimes3;
+  String? resultPrimes1;
+  String? resultPrimes2;
+  String? resultPrimes3;
 
   bool canceled = false;
 
@@ -42,25 +44,25 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
 
     popup.show();
     if (canceled) return;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     if (canceled) return;
     final primes1 = primesMap().take(10).join(', ');
 
     popup.setDetailLabel('Progress 33%...');
     if (canceled) return;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     if (canceled) return;
     final primes2 = primesMap().take(20).skip(10).join(', ');
 
     popup.setDetailLabel('Progress 66%...');
     if (canceled) return;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     if (canceled) return;
     final primes3 = primesMap().take(30).skip(20).join(', ');
 
     popup.setDetailLabel('Done 100%...');
     if (canceled) return;
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     if (canceled) return;
 
     popup.dismiss();
@@ -74,10 +76,19 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _reload();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(HUDUsingPopupCancelable.title),
+        title: const Text(HUDUsingPopupCancelable.title),
       ),
       body: Center(
         child: Column(
@@ -91,7 +102,7 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
               ),
             if (resultPrimes1 != null)
               Text(
-                resultPrimes1,
+                resultPrimes1!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -103,7 +114,7 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
               ),
             if (resultPrimes2 != null)
               Text(
-                resultPrimes2,
+                resultPrimes2!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -115,7 +126,7 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
               ),
             if (resultPrimes3 != null)
               Text(
-                resultPrimes3,
+                resultPrimes3!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
@@ -129,8 +140,8 @@ class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
         onPressed: _reload,
+        child: const Icon(Icons.refresh),
       ),
     );
   }
