@@ -27,7 +27,6 @@ jobs:
         run: |
           echo "FLUTTER_ROOT=$FLUTTER_HOME" >> $GITHUB_ENV
           bash scripts/credentials.sh
-          rm -rf scripts/
           make
           make deps
           flutter pub global activate dartdoc
