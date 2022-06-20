@@ -30,6 +30,6 @@ jobs:
           rm -rf scripts/
           make
           make deps
-          pub global activate dartdoc
+          flutter pub global activate dartdoc
           make docs
-          pub publish -n -v
+          flutter pub publish -n -v
