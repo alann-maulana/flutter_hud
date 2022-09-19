@@ -12,6 +12,8 @@ class HUD {
     this.labelStyle,
     this.detailLabel,
     this.detailLabelStyle,
+    this.decoration,
+    this.padding,
   })  : assert(opacity >= 0.0 && opacity <= 1.0),
         progressIndicator = progressIndicator ??= const hud.ProgressIndicator();
 
@@ -38,4 +40,8 @@ class HUD {
 
   /// The widget used by progress HUD
   final Widget progressIndicator;
+
+  final BoxDecoration? decoration;
+
+  final EdgeInsetsGeometry? padding;
 }

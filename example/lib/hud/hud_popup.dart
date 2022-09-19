@@ -26,7 +26,17 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
       context,
       hud: HUD(
         label: 'Generating Primes',
+        progressIndicator: CircularProgressIndicator.adaptive(
+          backgroundColor: Theme.of(context).primaryColorLight,
+        ),
+        labelStyle: Theme.of(context).textTheme.headline6,
         detailLabel: 'Initializing...',
+        detailLabelStyle: Theme.of(context).textTheme.subtitle2,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+        ),
+        padding: const EdgeInsets.all(16),
       ),
     );
 

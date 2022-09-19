@@ -26,7 +26,7 @@ class PopupHUD {
   /// If null, this progress indicator is indeterminate, which means the
   /// indicator displays a predetermined animation that does not indicate how
   /// much actual progress is being made.
-  double? get value => _popupHUD._value;
+  double? get value => _popupHUD._value.value;
 
   /// Update the displayed progress HUD value
   void setValue(double value) {
@@ -34,7 +34,7 @@ class PopupHUD {
   }
 
   /// Return progress HUD label text
-  String? get label => _popupHUD._label;
+  String? get label => _popupHUD._label.value;
 
   /// Update the displayed progress HUD label
   void setLabel(String label) {
@@ -42,7 +42,7 @@ class PopupHUD {
   }
 
   /// Return progress HUD detail label text
-  String? get detailLabel => _popupHUD._detailLabel;
+  String? get detailLabel => _popupHUD._detailLabel.value;
 
   /// Update the displayed progress HUD detail label
   void setDetailLabel(String detail) {
@@ -64,17 +64,16 @@ class _PopupHUD extends ModalRoute<void> {
     this.onCancel,
     required HUD hud,
   }) : _hud = hud {
-    _label = _hud.label;
-    _detailLabel = _hud.detailLabel;
+    _label = ValueNotifier(_hud.label);
+    _detailLabel = ValueNotifier(_hud.detailLabel);
+    _value = ValueNotifier(null);
   }
 
   final VoidCallback? onCancel;
   final HUD _hud;
-  double? _value;
-  String? _label;
-  String? _detailLabel;
-
-  StateSetter? _setStateValue, _setStateLabel, _setStateDetailLabel;
+  late final ValueNotifier<double?> _value;
+  late final ValueNotifier<String?> _label;
+  late final ValueNotifier<String?> _detailLabel;
 
   @override
   Color get barrierColor => _hud.color.withOpacity(_hud.opacity);
@@ -93,62 +92,68 @@ class _PopupHUD extends ModalRoute<void> {
     final children = <Widget>[
       Container(
         constraints: BoxConstraints(maxWidth: size.width * 0.6),
-        child: StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-          _setStateValue = setState;
-
-          return showOrUpdateProgressIndicator(_hud, _value);
-        }),
+        child: ValueListenableBuilder<double?>(
+          valueListenable: _value,
+          builder: (context, value, child) {
+            return showOrUpdateProgressIndicator(_hud, value);
+          },
+        ),
       ),
-      if (_showLabel) const SizedBox(height: 8),
-      if (_showLabel) const SizedBox(height: 8),
-      StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
-        _setStateLabel = setState;
-
-        if (_showLabel) {
-          return Text(
-            _label!,
-            style: _hud.labelStyle ??
-                Theme.of(context).textTheme.headline6!.copyWith(
-                      color: Colors.white,
-                    ),
-          );
-        }
-
-        return const SizedBox.shrink();
-      }),
-      if (_showDetailLabel) const SizedBox(height: 4.0),
-      StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
-        _setStateDetailLabel = setState;
-
-        if (_showDetailLabel) {
-          return Text(
-            _detailLabel!,
-            style: _hud.detailLabelStyle ??
-                Theme.of(context).textTheme.subtitle2!.copyWith(
-                      color: Colors.white70,
-                    ),
-          );
-        }
-
-        return const SizedBox.shrink();
-      }),
-      if (onCancel != null) const SizedBox(height: 16),
-      if (onCancel != null)
+      if (_showLabel) ...{
+        const SizedBox(height: 16),
+        ValueListenableBuilder<String?>(
+          valueListenable: _label,
+          builder: (context, label, child) {
+            return Text(
+              label!,
+              style: _hud.labelStyle ??
+                  Theme.of(context).textTheme.headline6!.copyWith(
+                        color: Colors.white,
+                      ),
+            );
+          },
+        ),
+      },
+      if (_showDetailLabel) ...{
+        const SizedBox(height: 4.0),
+        ValueListenableBuilder<String?>(
+          valueListenable: _detailLabel,
+          builder: (context, detailLabel, child) {
+            return Text(
+              detailLabel!,
+              style: _hud.detailLabelStyle ??
+                  Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Colors.white70,
+                      ),
+            );
+          },
+        ),
+      },
+      if (onCancel != null) ...{
+        const SizedBox(height: 16),
         CancelButton(onCancel: () {
           canceled(context);
         }),
+      },
     ];
+
+    final column = Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: children,
+    );
 
     return Material(
       type: MaterialType.transparency,
       child: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: children,
-          ),
+          child: _hud.decoration != null
+              ? Container(
+                  decoration: _hud.decoration,
+                  padding: _hud.padding,
+                  child: column,
+                )
+              : column,
         ),
       ),
     );
@@ -170,32 +175,21 @@ class _PopupHUD extends ModalRoute<void> {
   @override
   Duration get transitionDuration => const Duration(milliseconds: 500);
 
-  bool get _showLabel => _label != null && _label!.isNotEmpty;
+  bool get _showLabel => _label.value != null && _label.value!.isNotEmpty;
 
-  bool get _showDetailLabel => _detailLabel != null && _detailLabel!.isNotEmpty;
+  bool get _showDetailLabel =>
+      _detailLabel.value != null && _detailLabel.value!.isNotEmpty;
 
   void setValue(double? value) {
     assert(value == null || (value >= 0 && value <= 1.0));
-    if (_setStateValue != null) {
-      _setStateValue!(() {
-        _value = value;
-      });
-    }
+    _value.value = value;
   }
 
   void setLabel(String label) {
-    if (_setStateLabel != null) {
-      _setStateLabel!(() {
-        _label = label;
-      });
-    }
+    _label.value = label;
   }
 
   void setDetailLabel(String detail) {
-    if (_setStateLabel != null) {
-      _setStateDetailLabel!(() {
-        _detailLabel = detail;
-      });
-    }
+    _detailLabel.value = detail;
   }
 }
