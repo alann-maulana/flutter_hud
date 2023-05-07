@@ -26,7 +26,7 @@ class CancelButton extends StatelessWidget {
     }
 
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      primary: Theme.of(context).primaryColor,
+      foregroundColor: Theme.of(context).primaryColor,
       minimumSize: const Size(88, 36),
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       shape: const RoundedRectangleBorder(
@@ -36,11 +36,7 @@ class CancelButton extends StatelessWidget {
 
     return Directionality(
       textDirection: TextDirection.ltr,
-      child: TextButton(
-        style: flatButtonStyle,
-        onPressed: onCancel,
-        child: const Text('Cancel'),
-      ),
+      child: TextButton(style: flatButtonStyle, onPressed: onCancel, child: const Text('Cancel')),
     );
   }
 }

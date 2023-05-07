@@ -6,14 +6,8 @@ import 'package:flutter_hud/src/helper.dart';
 /// Class for managing progress HUD popup
 class PopupHUD {
   /// Initialize [PopupHUD]
-  PopupHUD(
-    this.context, {
-    VoidCallback? onCancel,
-    HUD? hud,
-  }) : _popupHUD = _PopupHUD(
-          hud: hud ??= HUD.kDefaultHUD,
-          onCancel: onCancel,
-        );
+  PopupHUD(this.context, {VoidCallback? onCancel, HUD? hud})
+      : _popupHUD = _PopupHUD(hud: hud ??= HUD.kDefaultHUD, onCancel: onCancel);
 
   /// The [BuildContext] of [PopupHUD] progress HUD to display
   final BuildContext context;
@@ -29,25 +23,19 @@ class PopupHUD {
   double? get value => _popupHUD._value.value;
 
   /// Update the displayed progress HUD value
-  void setValue(double value) {
-    _popupHUD.setValue(value);
-  }
+  void setValue(double value) => _popupHUD.setValue(value);
 
   /// Return progress HUD label text
   String? get label => _popupHUD._label.value;
 
   /// Update the displayed progress HUD label
-  void setLabel(String label) {
-    _popupHUD.setLabel(label);
-  }
+  void setLabel(String label) => _popupHUD.setLabel(label);
 
   /// Return progress HUD detail label text
   String? get detailLabel => _popupHUD._detailLabel.value;
 
   /// Update the displayed progress HUD detail label
-  void setDetailLabel(String detail) {
-    _popupHUD.setDetailLabel(detail);
-  }
+  void setDetailLabel(String detail) => _popupHUD.setDetailLabel(detail);
 
   /// Show [PopupHUD] on top of current [Navigator]
   Future<void> show() => Navigator.push(context, _popupHUD);
@@ -85,18 +73,16 @@ class _PopupHUD extends ModalRoute<void> {
   String? get barrierLabel => null;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
     final size = MediaQuery.of(context).size;
+    final textTheme = Theme.of(context).textTheme;
 
     final children = <Widget>[
       Container(
         constraints: BoxConstraints(maxWidth: size.width * 0.6),
         child: ValueListenableBuilder<double?>(
           valueListenable: _value,
-          builder: (context, value, child) {
-            return showOrUpdateProgressIndicator(_hud, value);
-          },
+          builder: (context, value, child) => showOrUpdateProgressIndicator(_hud, value),
         ),
       ),
       if (_showLabel) ...{
@@ -104,13 +90,7 @@ class _PopupHUD extends ModalRoute<void> {
         ValueListenableBuilder<String?>(
           valueListenable: _label,
           builder: (context, label, child) {
-            return Text(
-              label!,
-              style: _hud.labelStyle ??
-                  Theme.of(context).textTheme.headline6!.copyWith(
-                        color: Colors.white,
-                      ),
-            );
+            return Text(label!, style: _hud.labelStyle ?? textTheme.titleLarge!.copyWith(color: Colors.white));
           },
         ),
       },
@@ -121,19 +101,14 @@ class _PopupHUD extends ModalRoute<void> {
           builder: (context, detailLabel, child) {
             return Text(
               detailLabel!,
-              style: _hud.detailLabelStyle ??
-                  Theme.of(context).textTheme.subtitle2!.copyWith(
-                        color: Colors.white70,
-                      ),
+              style: _hud.detailLabelStyle ?? textTheme.titleSmall!.copyWith(color: Colors.white70),
             );
           },
         ),
       },
       if (onCancel != null) ...{
         const SizedBox(height: 16),
-        CancelButton(onCancel: () {
-          canceled(context);
-        }),
+        CancelButton(onCancel: () => canceled(context)),
       },
     ];
 
@@ -148,11 +123,7 @@ class _PopupHUD extends ModalRoute<void> {
       child: SafeArea(
         child: Center(
           child: _hud.decoration != null
-              ? Container(
-                  decoration: _hud.decoration,
-                  padding: _hud.padding,
-                  child: column,
-                )
+              ? Container(decoration: _hud.decoration, padding: _hud.padding, child: column)
               : column,
         ),
       ),
@@ -161,9 +132,7 @@ class _PopupHUD extends ModalRoute<void> {
 
   void canceled(BuildContext context) {
     Navigator.pop(context);
-    if (onCancel != null) {
-      onCancel!();
-    }
+    if (onCancel != null) onCancel!();
   }
 
   @override
@@ -177,19 +146,14 @@ class _PopupHUD extends ModalRoute<void> {
 
   bool get _showLabel => _label.value != null && _label.value!.isNotEmpty;
 
-  bool get _showDetailLabel =>
-      _detailLabel.value != null && _detailLabel.value!.isNotEmpty;
+  bool get _showDetailLabel => _detailLabel.value != null && _detailLabel.value!.isNotEmpty;
 
   void setValue(double? value) {
     assert(value == null || (value >= 0 && value <= 1.0));
     _value.value = value;
   }
 
-  void setLabel(String label) {
-    _label.value = label;
-  }
+  void setLabel(String label) => _label.value = label;
 
-  void setDetailLabel(String detail) {
-    _detailLabel.value = detail;
-  }
+  void setDetailLabel(String detail) => _detailLabel.value = detail;
 }

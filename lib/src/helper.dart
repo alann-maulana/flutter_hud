@@ -7,8 +7,7 @@ Widget showOrUpdateProgressIndicator(HUD hud, double? value) {
   }
 
   if (hud.progressIndicator is CircularProgressIndicator) {
-    CircularProgressIndicator old =
-        hud.progressIndicator as CircularProgressIndicator;
+    CircularProgressIndicator old = hud.progressIndicator as CircularProgressIndicator;
     return CircularProgressIndicator(
       key: old.key,
       value: value,
@@ -21,8 +20,7 @@ Widget showOrUpdateProgressIndicator(HUD hud, double? value) {
   }
 
   if (hud.progressIndicator is LinearProgressIndicator) {
-    LinearProgressIndicator old =
-        hud.progressIndicator as LinearProgressIndicator;
+    LinearProgressIndicator old = hud.progressIndicator as LinearProgressIndicator;
     return LinearProgressIndicator(
       key: old.key,
       value: value,
@@ -33,7 +31,5 @@ Widget showOrUpdateProgressIndicator(HUD hud, double? value) {
     );
   }
 
-  return CircularProgressIndicator(
-    value: value,
-  );
+  return CircularProgressIndicator(value: value);
 }

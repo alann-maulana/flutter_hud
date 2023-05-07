@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hud/src/progress_indicator.dart' as hud;
 
 /// Class for managing progress HUD template
 class HUD {
@@ -15,7 +14,7 @@ class HUD {
     this.decoration,
     this.padding,
   })  : assert(opacity >= 0.0 && opacity <= 1.0),
-        progressIndicator = progressIndicator ??= const hud.ProgressIndicator();
+        progressIndicator = progressIndicator ??= const CircularProgressIndicator.adaptive();
 
   /// The global default template for generating progress HUD
   static HUD kDefaultHUD = HUD();
