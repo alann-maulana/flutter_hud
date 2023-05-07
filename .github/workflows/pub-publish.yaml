@@ -26,6 +26,6 @@ jobs:
           bash scripts/credentials.sh
           make
           make deps
-          pub global activate dartdoc
+          dart pub global activate dartdoc
           make docs
-          pub publish -f -v
+          dart pub publish -f -v
