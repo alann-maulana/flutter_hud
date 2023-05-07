@@ -100,10 +100,16 @@ class WidgetHUD extends StatelessWidget {
       },
     ];
 
+    final column = Column(mainAxisSize: MainAxisSize.min, children: children);
+
     return Container(
       color: hud.color.withOpacity(hud.opacity),
       child: Center(
-          child: Column(mainAxisSize: MainAxisSize.min, children: children)),
+        child: hud.decoration != null
+            ? Container(
+                decoration: hud.decoration, padding: hud.padding, child: column)
+            : column,
+      ),
     );
   }
 }
