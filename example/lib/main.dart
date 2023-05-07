@@ -48,14 +48,12 @@ class HUDList extends StatelessWidget {
             ),
             TileItem(
               label: HUDWithLabelDetail.title,
-              description:
-                  '"${HUDDefault.title}" with label and detailed label below',
+              description: '"${HUDDefault.title}" with label and detailed label below',
               builder: (context) => const HUDWithLabelDetail(),
             ),
             TileItem(
               label: HUDWithCancelable.title,
-              description:
-                  '"${HUDWithLabelDetail.title}" with cancelable button',
+              description: '"${HUDWithLabelDetail.title}" with cancelable button',
               builder: (context) => const HUDWithCancelable(),
             ),
             TileItem(

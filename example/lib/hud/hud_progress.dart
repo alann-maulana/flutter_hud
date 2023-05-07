@@ -58,11 +58,11 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
       value: value,
       hud: HUD(
         label: 'Generating Primes',
-        detailLabel: value == null
-            ? 'Initializing..'
-            : 'Progress ${(value! * 100).toInt()}%',
+        detailLabel: value == null ? 'Initializing..' : 'Progress ${(value! * 100).toInt()}%',
       ),
-      builder: (context) => Scaffold(
+      builder: (context, child) => child!,
+      showHUD: showHUD,
+      child: Scaffold(
         appBar: AppBar(
           title: const Text(HUDWidgetProgress.title),
         ),
@@ -74,13 +74,13 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
                 Text(
                   'The first 10 primes :',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               if (resultPrimes != null)
                 Text(
                   resultPrimes!,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
             ],
           ),
@@ -92,7 +92,6 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
               )
             : null,
       ),
-      showHUD: showHUD,
     );
   }
 }

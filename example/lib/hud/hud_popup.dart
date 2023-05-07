@@ -27,11 +27,11 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
       hud: HUD(
         label: 'Generating Primes',
         progressIndicator: CircularProgressIndicator.adaptive(
-          backgroundColor: Theme.of(context).primaryColorLight,
+          backgroundColor: Theme.of(context).primaryColor,
         ),
-        labelStyle: Theme.of(context).textTheme.headline6,
+        labelStyle: Theme.of(context).textTheme.titleLarge,
         detailLabel: 'Initializing...',
-        detailLabelStyle: Theme.of(context).textTheme.subtitle2,
+        detailLabelStyle: Theme.of(context).textTheme.titleSmall,
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -88,37 +88,37 @@ class _HUDUsingPopupState extends State<HUDUsingPopup> {
               Text(
                 'The first 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             if (resultPrimes1 != null)
               Text(
                 resultPrimes1!,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             if (resultPrimes2 != null)
               Text(
                 'The second 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             if (resultPrimes2 != null)
               Text(
                 resultPrimes2!,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             if (resultPrimes3 != null)
               Text(
                 'The third 10 primes :',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             if (resultPrimes3 != null)
               Text(
                 resultPrimes3!,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
           ],
         ),
