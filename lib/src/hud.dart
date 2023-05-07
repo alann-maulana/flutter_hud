@@ -14,7 +14,8 @@ class HUD {
     this.decoration,
     this.padding,
   })  : assert(opacity >= 0.0 && opacity <= 1.0),
-        progressIndicator = progressIndicator ??= const CircularProgressIndicator.adaptive();
+        progressIndicator =
+            progressIndicator ??= const CircularProgressIndicator.adaptive();
 
   /// The global default template for generating progress HUD
   static HUD kDefaultHUD = HUD();

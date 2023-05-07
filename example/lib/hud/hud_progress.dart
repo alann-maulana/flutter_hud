@@ -58,7 +58,9 @@ class _HUDWidgetProgressState extends State<HUDWidgetProgress> {
       value: value,
       hud: HUD(
         label: 'Generating Primes',
-        detailLabel: value == null ? 'Initializing..' : 'Progress ${(value! * 100).toInt()}%',
+        detailLabel: value == null
+            ? 'Initializing..'
+            : 'Progress ${(value! * 100).toInt()}%',
       ),
       builder: (context, child) => child!,
       showHUD: showHUD,

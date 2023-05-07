@@ -36,7 +36,10 @@ class CancelButton extends StatelessWidget {
 
     return Directionality(
       textDirection: TextDirection.ltr,
-      child: TextButton(style: flatButtonStyle, onPressed: onCancel, child: const Text('Cancel')),
+      child: TextButton(
+          style: flatButtonStyle,
+          onPressed: onCancel,
+          child: const Text('Cancel')),
     );
   }
 }

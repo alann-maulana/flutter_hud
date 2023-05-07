@@ -8,7 +8,8 @@ class HUDUsingPopupCancelable extends StatefulWidget {
   const HUDUsingPopupCancelable({Key? key}) : super(key: key);
 
   @override
-  State<HUDUsingPopupCancelable> createState() => _HUDUsingPopupCancelableState();
+  State<HUDUsingPopupCancelable> createState() =>
+      _HUDUsingPopupCancelableState();
 }
 
 class _HUDUsingPopupCancelableState extends State<HUDUsingPopupCancelable> {

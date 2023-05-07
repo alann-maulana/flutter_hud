@@ -73,7 +73,8 @@ class _PopupHUD extends ModalRoute<void> {
   String? get barrierLabel => null;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
     final size = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
 
@@ -82,7 +83,8 @@ class _PopupHUD extends ModalRoute<void> {
         constraints: BoxConstraints(maxWidth: size.width * 0.6),
         child: ValueListenableBuilder<double?>(
           valueListenable: _value,
-          builder: (context, value, child) => showOrUpdateProgressIndicator(_hud, value),
+          builder: (context, value, child) =>
+              showOrUpdateProgressIndicator(_hud, value),
         ),
       ),
       if (_showLabel) ...{
@@ -90,7 +92,9 @@ class _PopupHUD extends ModalRoute<void> {
         ValueListenableBuilder<String?>(
           valueListenable: _label,
           builder: (context, label, child) {
-            return Text(label!, style: _hud.labelStyle ?? textTheme.titleLarge!.copyWith(color: Colors.white));
+            return Text(label!,
+                style: _hud.labelStyle ??
+                    textTheme.titleLarge!.copyWith(color: Colors.white));
           },
         ),
       },
@@ -101,7 +105,8 @@ class _PopupHUD extends ModalRoute<void> {
           builder: (context, detailLabel, child) {
             return Text(
               detailLabel!,
-              style: _hud.detailLabelStyle ?? textTheme.titleSmall!.copyWith(color: Colors.white70),
+              style: _hud.detailLabelStyle ??
+                  textTheme.titleSmall!.copyWith(color: Colors.white70),
             );
           },
         ),
@@ -123,7 +128,10 @@ class _PopupHUD extends ModalRoute<void> {
       child: SafeArea(
         child: Center(
           child: _hud.decoration != null
-              ? Container(decoration: _hud.decoration, padding: _hud.padding, child: column)
+              ? Container(
+                  decoration: _hud.decoration,
+                  padding: _hud.padding,
+                  child: column)
               : column,
         ),
       ),
@@ -146,7 +154,8 @@ class _PopupHUD extends ModalRoute<void> {
 
   bool get _showLabel => _label.value != null && _label.value!.isNotEmpty;
 
-  bool get _showDetailLabel => _detailLabel.value != null && _detailLabel.value!.isNotEmpty;
+  bool get _showDetailLabel =>
+      _detailLabel.value != null && _detailLabel.value!.isNotEmpty;
 
   void setValue(double? value) {
     assert(value == null || (value >= 0 && value <= 1.0));

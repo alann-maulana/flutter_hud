@@ -6,7 +6,8 @@ import 'package:flutter_hud/src/hud.dart';
 /// A builder that builds a widget given a child.
 ///
 /// The child should typically be part of the returned widget tree.
-typedef TransitionBuilder = Widget Function(BuildContext context, Widget? child);
+typedef TransitionBuilder = Widget Function(
+    BuildContext context, Widget? child);
 
 /// Class for managing progress HUD widget
 class WidgetHUD extends StatelessWidget {
@@ -66,7 +67,10 @@ class WidgetHUD extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
 
-    return Stack(children: <Widget>[builder(context, child), _buildContainer(size, textTheme)]);
+    return Stack(children: <Widget>[
+      builder(context, child),
+      _buildContainer(size, textTheme)
+    ]);
   }
 
   Container _buildContainer(Size size, TextTheme textTheme) {
@@ -76,14 +80,19 @@ class WidgetHUD extends StatelessWidget {
         constraints: BoxConstraints(maxWidth: size.width * 0.6),
         child: showOrUpdateProgressIndicator(hud, value),
       ),
-      if (hud.label != null || hud.detailLabel != null) const SizedBox(height: 8),
+      if (hud.label != null || hud.detailLabel != null)
+        const SizedBox(height: 8),
       if (hud.label != null) ...{
         const SizedBox(height: 8),
-        Text(hud.label!, style: hud.labelStyle ?? textTheme.titleLarge!.copyWith(color: Colors.white)),
+        Text(hud.label!,
+            style: hud.labelStyle ??
+                textTheme.titleLarge!.copyWith(color: Colors.white)),
       },
       if (hud.detailLabel != null) ...{
         const SizedBox(height: 4),
-        Text(hud.detailLabel!, style: hud.detailLabelStyle ?? textTheme.titleSmall!.copyWith(color: Colors.white70)),
+        Text(hud.detailLabel!,
+            style: hud.detailLabelStyle ??
+                textTheme.titleSmall!.copyWith(color: Colors.white70)),
       },
       if (onCancel != null) ...{
         const SizedBox(height: 16),
@@ -93,7 +102,8 @@ class WidgetHUD extends StatelessWidget {
 
     return Container(
       color: hud.color.withOpacity(hud.opacity),
-      child: Center(child: Column(mainAxisSize: MainAxisSize.min, children: children)),
+      child: Center(
+          child: Column(mainAxisSize: MainAxisSize.min, children: children)),
     );
   }
 }

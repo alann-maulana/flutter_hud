@@ -36,7 +36,8 @@ void main() {
     expect(progressFinder2, findsOneWidget, skip: true);
   });
 
-  testWidgets('CircularProgressIndicator HUD shown', (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD shown',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
@@ -55,7 +56,8 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CupertinoActivityIndicator HUD shown', (WidgetTester tester) async {
+  testWidgets('CupertinoActivityIndicator HUD shown',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
@@ -74,7 +76,8 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CircularProgressIndicator HUD with title shown', (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with title shown',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
@@ -98,7 +101,8 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CircularProgressIndicator HUD with title and detail shown', (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with title and detail shown',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
@@ -125,7 +129,8 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CircularProgressIndicator HUD with cancelation shown', (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with cancelation shown',
+      (WidgetTester tester) async {
     var canceled = false;
     await tester.pumpWidget(
       MaterialApp(
@@ -157,7 +162,8 @@ void main() {
   });
 
   double? value;
-  testWidgets('CircularProgressIndicator HUD with label and progress shown', (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with label and progress shown',
+      (WidgetTester tester) async {
     late StateSetter setStater;
     await tester.pumpWidget(
       MaterialApp(

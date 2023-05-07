@@ -15,7 +15,8 @@ void main() {
     final widget = showOrUpdateProgressIndicator(HUD.kDefaultHUD, 0.1);
 
     expect(
-      widget is CircularProgressIndicator || widget is CupertinoActivityIndicator,
+      widget is CircularProgressIndicator ||
+          widget is CupertinoActivityIndicator,
       true,
     );
   });
