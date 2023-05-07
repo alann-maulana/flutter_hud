@@ -1,3 +1,6 @@
+## [1.0.0]
+* Stable release
+
 ## [0.4.0]
 * Upgrade Flutter 3
 
