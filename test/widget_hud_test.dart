@@ -7,9 +7,8 @@ void main() {
   testWidgets('Default HUD not shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       WidgetHUD(
-        builder: (BuildContext context) => const MaterialApp(
-          home: Text('This is body'),
-        ),
+        builder: (BuildContext context, Widget? child) => child!,
+        child: const MaterialApp(home: Text('This is body')),
       ),
     );
 
@@ -21,8 +20,9 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
-          builder: (BuildContext context) => const Text('This is body'),
+          builder: (BuildContext context, Widget? child) => child!,
           showHUD: true,
+          child: const Text('This is body'),
         ),
       ),
     );
@@ -36,14 +36,14 @@ void main() {
     expect(progressFinder2, findsOneWidget, skip: true);
   });
 
-  testWidgets('CircularProgressIndicator HUD shown',
-      (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
           hud: HUD(progressIndicator: const CircularProgressIndicator()),
-          builder: (BuildContext context) => const Text('This is body'),
+          builder: (BuildContext context, Widget? child) => child!,
           showHUD: true,
+          child: const Text('This is body'),
         ),
       ),
     );
@@ -55,14 +55,14 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CupertinoActivityIndicator HUD shown',
-      (WidgetTester tester) async {
+  testWidgets('CupertinoActivityIndicator HUD shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
           hud: HUD(progressIndicator: const CupertinoActivityIndicator()),
-          builder: (BuildContext context) => const Text('This is body'),
+          builder: (BuildContext context, Widget? child) => child!,
           showHUD: true,
+          child: const Text('This is body'),
         ),
       ),
     );
@@ -74,8 +74,7 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CircularProgressIndicator HUD with title shown',
-      (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with title shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
@@ -83,8 +82,9 @@ void main() {
             progressIndicator: const CircularProgressIndicator(),
             label: 'Loading...',
           ),
-          builder: (BuildContext context) => const Text('This is body'),
+          builder: (BuildContext context, Widget? child) => child!,
           showHUD: true,
+          child: const Text('This is body'),
         ),
       ),
     );
@@ -98,8 +98,7 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CircularProgressIndicator HUD with title and detail shown',
-      (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with title and detail shown', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: WidgetHUD(
@@ -108,8 +107,9 @@ void main() {
             label: 'Loading...',
             detailLabel: 'Please wait',
           ),
-          builder: (BuildContext context) => const Text('This is body'),
+          builder: (BuildContext context, Widget? child) => child!,
           showHUD: true,
+          child: const Text('This is body'),
         ),
       ),
     );
@@ -125,8 +125,7 @@ void main() {
     expect(progressFinder, findsOneWidget);
   });
 
-  testWidgets('CircularProgressIndicator HUD with cancelation shown',
-      (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with cancelation shown', (WidgetTester tester) async {
     var canceled = false;
     await tester.pumpWidget(
       MaterialApp(
@@ -137,8 +136,9 @@ void main() {
           onCancel: () {
             canceled = true;
           },
-          builder: (BuildContext context) => const Text('This is body'),
+          builder: (BuildContext context, Widget? child) => child!,
           showHUD: true,
+          child: const Text('This is body'),
         ),
       ),
     );
@@ -157,8 +157,7 @@ void main() {
   });
 
   double? value;
-  testWidgets('CircularProgressIndicator HUD with label and progress shown',
-      (WidgetTester tester) async {
+  testWidgets('CircularProgressIndicator HUD with label and progress shown', (WidgetTester tester) async {
     late StateSetter setStater;
     await tester.pumpWidget(
       MaterialApp(
@@ -172,8 +171,9 @@ void main() {
                   label: value == null ? 'Initializing' : 'Processing',
                 ),
                 value: value,
-                builder: (BuildContext context) => const Text('This is body'),
+                builder: (BuildContext context, Widget? child) => child!,
                 showHUD: true,
+                child: const Text('This is body'),
               );
             },
           ),

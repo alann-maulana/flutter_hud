@@ -2,22 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hud/flutter_hud.dart';
 import 'package:flutter_hud/src/helper.dart';
-import 'package:flutter_hud/src/progress_indicator.dart' as hud;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('test default HUD + value == null', () {
     final widget = showOrUpdateProgressIndicator(HUD.kDefaultHUD, null);
 
-    expect(widget is hud.ProgressIndicator, true);
+    expect(widget is CircularProgressIndicator, true);
   });
 
   test('test default HUD + value != null', () {
     final widget = showOrUpdateProgressIndicator(HUD.kDefaultHUD, 0.1);
 
     expect(
-      widget is CircularProgressIndicator ||
-          widget is CupertinoActivityIndicator,
+      widget is CircularProgressIndicator || widget is CupertinoActivityIndicator,
       true,
     );
   });
@@ -45,7 +43,7 @@ void main() {
       0.1,
     );
 
-    expect(widget is hud.ProgressIndicator, false);
+    expect(widget is CircularProgressIndicator, false);
     expect(widget is LinearProgressIndicator, true);
   });
 }
