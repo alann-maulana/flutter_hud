@@ -18,7 +18,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '3.0.0'
+          flutter-version: '3.7.8'
           channel: 'stable'
       - name: Documenting package
         run: |
