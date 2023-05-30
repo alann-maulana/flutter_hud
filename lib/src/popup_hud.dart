@@ -23,7 +23,7 @@ class PopupHUD {
   double? get value => _popupHUD._value.value;
 
   /// Update the displayed progress HUD value
-  void setValue(double value) => _popupHUD.setValue(value);
+  void setValue(double? value) => _popupHUD.setValue(value);
 
   /// Return progress HUD label text
   String? get label => _popupHUD._label.value;
