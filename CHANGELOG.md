@@ -1,3 +1,6 @@
+## [1.0.1]
+* Mini fix
+
 ## [1.0.0]
 * Stable release
 

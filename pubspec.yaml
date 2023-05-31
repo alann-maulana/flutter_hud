@@ -1,6 +1,6 @@
 name: flutter_hud
 description: A clean and lightweight progress HUD to show a running asynchronous task for Flutter.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/eyro-labs/flutter_hud
 
 environment:
