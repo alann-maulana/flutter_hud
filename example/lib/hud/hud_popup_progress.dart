@@ -34,8 +34,9 @@ class _HUDPopupProgressState extends State<HUDPopupProgress> {
       popup.setValue(value);
       popup.setDetailLabel('Progress ${(value * 100).toInt()}%..');
     }
+    popup.setValue(null);
 
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 10000));
     popup.dismiss();
     if (mounted) {
       setState(() {
