@@ -13,6 +13,8 @@ class HUD {
     this.detailLabelStyle,
     this.decoration,
     this.padding,
+    this.labelAlignment,
+    this.detailLabelAlignment,
   })  : assert(opacity >= 0.0 && opacity <= 1.0),
         progressIndicator =
             progressIndicator ??= const CircularProgressIndicator.adaptive();
@@ -32,11 +34,17 @@ class HUD {
   /// The [TextStyle] used by [label]
   final TextStyle? labelStyle;
 
+  /// The [TextAlign]ment used by [label]
+  final TextAlign? labelAlignment;
+
   /// The detail label displayed below [label]
   final String? detailLabel;
 
   /// The [TextStyle] used by [detailLabel]
   final TextStyle? detailLabelStyle;
+
+  /// The [TextAlign]ment used by [detailLabel]
+  final TextAlign? detailLabelAlignment;
 
   /// The widget used by progress HUD
   final Widget progressIndicator;

@@ -92,9 +92,14 @@ class _PopupHUD extends ModalRoute<void> {
         ValueListenableBuilder<String?>(
           valueListenable: _label,
           builder: (context, label, child) {
-            return Text(label!,
-                style: _hud.labelStyle ??
-                    textTheme.titleLarge!.copyWith(color: Colors.white));
+            return Text(
+              label!,
+              style: _hud.labelStyle ??
+                  textTheme.titleLarge!.copyWith(
+                    color: Colors.white,
+                  ),
+              textAlign: _hud.labelAlignment,
+            );
           },
         ),
       },
@@ -107,6 +112,7 @@ class _PopupHUD extends ModalRoute<void> {
               detailLabel!,
               style: _hud.detailLabelStyle ??
                   textTheme.titleSmall!.copyWith(color: Colors.white70),
+              textAlign: _hud.detailLabelAlignment,
             );
           },
         ),
