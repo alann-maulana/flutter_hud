@@ -60,45 +60,60 @@ class WidgetHUD extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!showHUD) {
-      return builder(context, child);
-    }
-
-    final textTheme = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
-
     return Stack(children: <Widget>[
       builder(context, child),
-      _buildContainer(size, textTheme)
+      if (showHUD)
+        _buildContainer(
+          MediaQuery.of(context).size,
+          Theme.of(context).textTheme,
+        )
     ]);
   }
 
   Container _buildContainer(Size size, TextTheme textTheme) {
-    final children = <Widget>[
-      if (onCancel != null) const SizedBox(height: 32),
-      Container(
-        constraints: BoxConstraints(maxWidth: size.width * 0.6),
-        child: showOrUpdateProgressIndicator(hud, value),
-      ),
-      if (hud.label != null || hud.detailLabel != null)
+    final children = <Widget>[];
+
+    if (onCancel != null) {
+      children.add(const SizedBox(height: 32));
+    }
+
+    children.add(Container(
+      constraints: BoxConstraints(maxWidth: size.width * 0.6),
+      child: showOrUpdateProgressIndicator(hud, value),
+    ));
+
+    if (hud.label != null || hud.detailLabel != null) {
+      children.add(const SizedBox(height: 8));
+    }
+
+    if (hud.label != null) {
+      children.addAll([
         const SizedBox(height: 8),
-      if (hud.label != null) ...{
-        const SizedBox(height: 8),
-        Text(hud.label!,
-            style: hud.labelStyle ??
-                textTheme.titleLarge!.copyWith(color: Colors.white)),
-      },
-      if (hud.detailLabel != null) ...{
+        Text(
+          hud.label!,
+          style: hud.labelStyle ??
+              textTheme.titleLarge!.copyWith(color: Colors.white),
+        ),
+      ]);
+    }
+
+    if (hud.detailLabel != null) {
+      children.addAll([
         const SizedBox(height: 4),
-        Text(hud.detailLabel!,
-            style: hud.detailLabelStyle ??
-                textTheme.titleSmall!.copyWith(color: Colors.white70)),
-      },
-      if (onCancel != null) ...{
+        Text(
+          hud.detailLabel!,
+          style: hud.detailLabelStyle ??
+              textTheme.titleSmall!.copyWith(color: Colors.white70),
+        ),
+      ]);
+    }
+
+    if (onCancel != null) {
+      children.addAll([
         const SizedBox(height: 16),
         CancelButton(onCancel: onCancel!),
-      },
-    ];
+      ]);
+    }
 
     final column = Column(mainAxisSize: MainAxisSize.min, children: children);
 
@@ -107,7 +122,10 @@ class WidgetHUD extends StatelessWidget {
       child: Center(
         child: hud.decoration != null
             ? Container(
-                decoration: hud.decoration, padding: hud.padding, child: column)
+                decoration: hud.decoration,
+                padding: hud.padding,
+                child: column,
+              )
             : column,
       ),
     );
